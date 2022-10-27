@@ -36,47 +36,68 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intentRegistro);
                 break;
             case R.id.btnIniciarSesion:
-                Usuario usuario = new Usuario(binding.edTextUsuario.getText().toString().toLowerCase());
 
-                if(Servicio.getInstance().getUsuarios().contains(usuario)){
-                    Boolean iniciar = Servicio.getInstance().getUsuario(usuario).getPassword().equals(binding.edTextPassword.getText().toString());
+                iniciarSesion();
 
-                    if(iniciar){
+                break;
+        }
 
-                        Intent intentInicio = new Intent(MainActivity.this, Inicio.class);
-                        startActivity(intentInicio);
+    }
 
-                    }
-                    else{
-                        AlertDialog.Builder dialogo1 = crearDialogo("Error al iniciar sesión", "El usuario o la constraseña es incorrecta");
+    private void iniciarSesion() {
+        if(binding.edTextUsuario.getText().toString().equals("") || binding.edTextPassword.getText().toString().equals("")){
 
-                        dialogo1.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
+            AlertDialog.Builder dialogo1 = crearDialogo("Usuario o contraseña vacío", "Por favor, introduzca usuario y contraseña");
 
-                            }
-                        });
+            dialogo1.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                }
+            });
 
-                        dialogo1.show();
-                    }
+            dialogo1.show();
 
-                } else {
-                    AlertDialog.Builder dialogo1 = crearDialogo("El usuario no existe", "Registrese para poder acceder");
+        } else{
+
+            Usuario usuario = new Usuario(binding.edTextUsuario.getText().toString().toLowerCase());
+
+            if(Servicio.getInstance().getUsuario(usuario) != null){
+                Boolean iniciar = Servicio.getInstance().getUsuario(usuario).getPassword().equals(binding.edTextPassword.getText().toString());
+
+                if(iniciar){
+
+                    Intent intentInicio = new Intent(MainActivity.this, Inicio.class);
+                    intentInicio.putExtra("usuario", usuario);
+                    startActivity(intentInicio);
+
+                }
+                else{
+                    AlertDialog.Builder dialogo1 = crearDialogo("Error al iniciar sesión", "El usuario o la constraseña es incorrecta");
 
                     dialogo1.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            Intent intentRegistro = new Intent(MainActivity.this, Registrar.class);
-                            startActivity(intentRegistro);
+
                         }
                     });
 
                     dialogo1.show();
                 }
 
-                break;
-        }
+            } else {
+                AlertDialog.Builder dialogo1 = crearDialogo("El usuario no existe", "Registrese para poder acceder");
 
+                dialogo1.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intentRegistro = new Intent(MainActivity.this, Registrar.class);
+                        startActivity(intentRegistro);
+                    }
+                });
+
+                dialogo1.show();
+            }
+        }
     }
 
     @Override

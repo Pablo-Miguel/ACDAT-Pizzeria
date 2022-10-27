@@ -8,15 +8,20 @@ import java.util.ArrayList;
 public class Servicio {
 
     private static Servicio serv;
+    private static ArrayList<Usuario> listaUsuarios;
 
     public Servicio() {
-
+        listaUsuarios = DAOPizzas.getInstance().getUsuarios();
     }
 
     public static Servicio getInstance() {
 
         if (serv == null) {
             serv = new Servicio();
+        }
+
+        if(listaUsuarios == null){
+            listaUsuarios = new ArrayList<Usuario>();
         }
 
         return serv;
@@ -34,4 +39,7 @@ public class Servicio {
 
     }
 
+    public int anyadirUsuario(Usuario usuario) {
+        return DAOPizzas.getInstance().insertarUsuario(usuario);
+    }
 }

@@ -1,8 +1,9 @@
 package com.example.acdat_pizzeria.modelo;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Usuario {
+public class Usuario implements Serializable {
 
     //private Integer id;
     private String email, usuario, password;
