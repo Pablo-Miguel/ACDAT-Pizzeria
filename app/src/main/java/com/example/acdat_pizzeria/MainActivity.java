@@ -15,6 +15,7 @@ import com.example.acdat_pizzeria.servicio.Servicio;
 import java.io.Serializable;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, Serializable {
+
     private ActivityMainBinding binding;
 
     @Override

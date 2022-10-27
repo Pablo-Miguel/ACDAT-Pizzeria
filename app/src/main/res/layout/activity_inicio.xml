@@ -49,8 +49,8 @@
             android:id="@+id/textView10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10sp"
-            android:layout_marginEnd="10sp"
+            android:layout_marginStart="30sp"
+            android:layout_marginEnd="30sp"
             android:text="@string/bienvenido"
             android:textSize="25sp"
             android:textStyle="bold" />
@@ -59,13 +59,14 @@
             android:id="@+id/lblUsuario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10sp"
-            android:layout_marginEnd="10sp"
+            android:layout_marginStart="30sp"
+            android:layout_marginEnd="30sp"
             android:text="@string/nombreUsuario"
-            android:textSize="20sp" />
+            android:textSize="30sp" />
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
@@ -77,7 +78,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btnFavorita"
             android:layout_width="match_parent"
             android:layout_height="60sp"
             android:layout_marginStart="30sp"
@@ -85,7 +86,7 @@
             android:text="@string/pizzaFavorita" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/btnPersonalizada"
             android:layout_width="match_parent"
             android:layout_height="60sp"
             android:layout_marginStart="30sp"
@@ -95,11 +96,12 @@
             android:text="@string/pizzaPersonalizada" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/btnPredeterminada"
             android:layout_width="match_parent"
             android:layout_height="60sp"
             android:layout_marginStart="30sp"
             android:layout_marginEnd="30sp"
-            android:text="@string/web" />
+            android:text="@string/pizzaPredeterminada" />
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

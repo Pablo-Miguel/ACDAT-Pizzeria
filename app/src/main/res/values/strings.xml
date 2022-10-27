@@ -11,8 +11,14 @@
     <string name="registrarse">Registrate aquí</string>
     <string name="descrpImg">LogoPizzeria</string>
     <string name="nombreUsuario">admin</string>
-    <string name="bienvenido">Bienvenido Usuario:</string>
+    <string name="bienvenido">Bienvenido:</string>
     <string name="pizzaFavorita">Pizza favorita</string>
     <string name="pizzaPersonalizada">Pizza personalizada</string>
-    <string name="web">Pizza web</string>
+    <string name="pizzaPredeterminada">Pizza predeterminada</string>
+    <string name="Individual">Individual</string>
+    <string name="Mediana">Mediana</string>
+    <string name="Familiar">Familiar</string>
+    <string name="Ingredientes">Ingredientes</string>
+    <string name="York">York</string>
+    <string name="Bacon">Bacon</string>
 </resources>

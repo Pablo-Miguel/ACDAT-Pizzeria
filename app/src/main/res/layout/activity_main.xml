@@ -83,9 +83,10 @@
             android:layout_height="50sp"
             android:layout_marginStart="10sp"
             android:layout_marginEnd="10sp"
+            android:autofillHints=""
             android:ems="10"
             android:inputType="textPersonName"
-            android:autofillHints="" />
+            android:text="admin" />
 
         <TextView
             android:id="@+id/textView5"
@@ -105,9 +106,10 @@
             android:layout_marginStart="10sp"
             android:layout_marginEnd="10sp"
             android:layout_marginBottom="10sp"
+            android:autofillHints=""
             android:ems="10"
             android:inputType="textPassword"
-            android:autofillHints="" />
+            android:text="1234" />
 
         <Button
             android:id="@+id/btnIniciarSesion"
