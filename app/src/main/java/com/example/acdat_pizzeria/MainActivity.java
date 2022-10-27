@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.acdat_pizzeria.databinding.ActivityMainBinding;
+import com.example.acdat_pizzeria.modelo.Usuario;
+import com.example.acdat_pizzeria.servicio.Servicio;
 
 import java.io.Serializable;
 
@@ -23,12 +25,39 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(view);
         getSupportActionBar().hide();
         binding.lblRegistrate.setOnClickListener(this);
+        binding.btnIniciarSesion.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        Intent intent = new Intent(MainActivity.this, Registrar.class);
-        startActivity(intent);
+        switch (view.getId()){
+            case R.id.lblRegistrate:
+                Intent intentRegistro = new Intent(MainActivity.this, Registrar.class);
+                startActivity(intentRegistro);
+                break;
+            case R.id.btnIniciarSesion:
+                Usuario usuario = new Usuario(binding.edTextUsuario.getText().toString());
+
+                if(Servicio.getInstance().getUsuarios().contains(usuario)){
+                    Boolean iniciar = Servicio.getInstance().getUsuario(usuario).getPassword().equals(binding.edTextPassword.getText().toString());
+
+                    if(iniciar){
+
+                        Intent intentInicio = new Intent(MainActivity.this, Inicio.class);
+                        startActivity(intentInicio);
+
+                    }
+                    else{
+
+                    }
+
+                } else {
+
+                }
+
+                break;
+        }
+
     }
 
     @Override

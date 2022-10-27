@@ -110,7 +110,7 @@
             android:autofillHints="" />
 
         <Button
-            android:id="@+id/btnRegistrarse2"
+            android:id="@+id/btnIniciarSesion"
             android:layout_width="match_parent"
             android:layout_height="70sp"
             android:layout_marginStart="30sp"
