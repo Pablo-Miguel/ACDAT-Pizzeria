@@ -21,4 +21,25 @@
     <string name="Ingredientes">Ingredientes</string>
     <string name="York">York</string>
     <string name="Bacon">Bacon</string>
+    <string name="PolloParrilla">Pollo a\nla parrilla</string>
+    <string name="BaconCrispy">Bacon\nCrispy</string>
+    <string name="ternera">Ternera</string>
+    <string name="polloBufalo">Pollo\nBuffalo</string>
+    <string name="pepperoni">Pepperoni</string>
+    <string name="Pulledpork">Pulled\npork</string>
+    <string name="anchoas">Anchoas</string>
+    <string name="atun">Atun</string>
+    <string name="VeggiChicken">VeggiChicken</string>
+    <string name="Veggeroni">Veggeroni</string>
+    <string name="champinon">Champiñon</string>
+    <string name="aceitunas">Aceitunas\nnegras</string>
+    <string name="cebolla">Cebolla</string>
+    <string name="Cebollacaramelizada">Cebolla\ncaramelizada</string>
+    <string name="tomate">Tomate</string>
+    <string name="pimiento">Pimiento\nverde</string>
+    <string name="pina">Piña</string>
+    <string name="miaz">Maiz</string>
+    <string name="QuesoParmesano">Queso\nParmesano</string>
+    <string name="SalsaQuesos">Salsas y quesos</string>
+    <string name="continuar">Continuar</string>
 </resources>
