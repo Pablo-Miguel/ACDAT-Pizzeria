@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">ACDAT-Pizzeria</string>
     <string name="pizzeria">Pizzeria Trattoria La Briciola</string>
     <string name="nombrePizzero">Pino Prestanizzi</string>
@@ -44,4 +44,17 @@
     <string name="continuar">Continuar</string>
     <string name="tamano">Tamaño</string>
     <string name="salsa">Salsa</string>
+    <string name="nosalsa">Sin salsa</string>
+    <string name="salsabbq">BBQ Original</string>
+    <string name="rancherabbq">Ranchera BBQ</string>
+    <string name="salsatomate">Salsa de tomate</string>
+    <string name="cremafresca">Crema fresca</string>
+    <string name="cremafrescaybarbacoa">Crema fresca y barbacoa</string>
+    <string name="salsabourbon">Salsa Bourbon</string>
+    <string name="barbacoatexas">Barbacoa Texas</string>
+    <string name="carbonaraMornay">Carbonara Mornay</string>
+    <string name="Queso">Queso</string>
+    <string name="sinqueso">Sin queso</string>
+    <string name="mozzarella">Mozzarella</string>
+    <string name="vegano">Vegano</string>
 </resources>
