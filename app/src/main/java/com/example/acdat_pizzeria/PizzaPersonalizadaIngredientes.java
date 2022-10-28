@@ -5,18 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.acdat_pizzeria.databinding.ActivityPizzaPersonalizadaBinding;
+import com.example.acdat_pizzeria.databinding.ActivityPizzaPersonalizadaIngredientesBinding;
 import com.example.acdat_pizzeria.modelo.Usuario;
 
-public class PizzaPersonalizada extends AppCompatActivity {
+public class PizzaPersonalizadaIngredientes extends AppCompatActivity {
 
     private Usuario usuario;
-    private ActivityPizzaPersonalizadaBinding binding;
+    private ActivityPizzaPersonalizadaIngredientesBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityPizzaPersonalizadaBinding.inflate(getLayoutInflater());
+        binding = ActivityPizzaPersonalizadaIngredientesBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
         getSupportActionBar().hide();

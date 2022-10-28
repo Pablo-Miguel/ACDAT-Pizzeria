@@ -42,4 +42,6 @@
     <string name="QuesoParmesano">Queso\nParmesano</string>
     <string name="SalsaQuesos">Salsas y quesos</string>
     <string name="continuar">Continuar</string>
+    <string name="tamano">Tamaño</string>
+    <string name="salsa">Salsa</string>
 </resources>

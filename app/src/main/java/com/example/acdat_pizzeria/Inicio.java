@@ -45,7 +45,7 @@ public class Inicio extends AppCompatActivity implements View.OnClickListener {
                 startActivity(intentPizzaFavorita);
                 break;
             case R.id.btnPersonalizada:
-                Intent intentPizzaPersonalizada = new Intent(Inicio.this, PizzaPersonalizada.class);
+                Intent intentPizzaPersonalizada = new Intent(Inicio.this, PizzaPersonalizadaTamano.class);
                 intentPizzaPersonalizada.putExtra("usuario", usuario);
                 startActivity(intentPizzaPersonalizada);
                 break;
