@@ -76,7 +76,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
         <RadioGroup
-            android:id="@+id/radioGroup"
+            android:id="@+id/rgTamano"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:gravity="center"
@@ -135,6 +135,7 @@
             android:textStyle="bold" />
 
         <com.example.acdat_pizzeria.vista.RadioGridGroup
+            android:id="@+id/rgSalsa"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="10sp"
@@ -143,7 +144,7 @@
             <TableRow android:layout_width="match_parent">
 
                 <RadioButton
-                    android:id="@+id/rad1"
+                    android:id="@+id/rbSinSalsa"
                     android:layout_width="130sp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="0sp"
@@ -151,7 +152,7 @@
                     android:text="@string/nosalsa" />
 
                 <RadioButton
-                    android:id="@+id/rad2"
+                    android:id="@+id/rbBBQOriginal"
                     android:layout_width="130sp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="0sp"
@@ -159,7 +160,7 @@
                     android:text="@string/salsabbq" />
 
                 <RadioButton
-                    android:id="@+id/rad3"
+                    android:id="@+id/rbRancheraBBQ"
                     android:layout_width="130sp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="0sp"
@@ -171,7 +172,7 @@
             <TableRow android:layout_width="match_parent">
 
                 <RadioButton
-                    android:id="@+id/rad4"
+                    android:id="@+id/rbSalsaTomate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="0sp"
@@ -179,7 +180,7 @@
                     android:text="@string/salsatomate" />
 
                 <RadioButton
-                    android:id="@+id/rad5"
+                    android:id="@+id/rbCremaFresca"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="0sp"
@@ -187,7 +188,7 @@
                     android:text="@string/cremafresca" />
 
                 <RadioButton
-                    android:id="@+id/rad6"
+                    android:id="@+id/rbCremaFrescaBarbacoa"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="0sp"
@@ -199,7 +200,7 @@
             <TableRow android:layout_width="match_parent">
 
                 <RadioButton
-                    android:id="@+id/rad7"
+                    android:id="@+id/rbSalsaBourbon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="0sp"
@@ -207,7 +208,7 @@
                     android:text="@string/salsabourbon" />
 
                 <RadioButton
-                    android:id="@+id/rad8"
+                    android:id="@+id/rbBarbacoaTexas"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="0sp"
@@ -215,7 +216,7 @@
                     android:text="@string/barbacoatexas" />
 
                 <RadioButton
-                    android:id="@+id/rad9"
+                    android:id="@+id/rbCarbonaraMornay"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="0sp"
@@ -237,6 +238,7 @@
             android:textStyle="bold" />
 
         <RadioGroup
+            android:id="@+id/rgQueso"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="10sp"
@@ -245,7 +247,7 @@
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/radioButton5"
+                android:id="@+id/rbSinQueso"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -253,7 +255,7 @@
                 android:text="@string/sinqueso" />
 
             <RadioButton
-                android:id="@+id/radioButton6"
+                android:id="@+id/rbMozzarella"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -261,7 +263,7 @@
                 android:text="@string/mozzarella" />
 
             <RadioButton
-                android:id="@+id/radioButton7"
+                android:id="@+id/rbVegano"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

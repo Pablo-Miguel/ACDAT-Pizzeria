@@ -37,6 +37,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/llIngredientes"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="1dp"
@@ -70,7 +71,7 @@
                 app:srcCompat="@drawable/jamonyork" />
 
             <CheckBox
-                android:id="@+id/checkBox5"
+                android:id="@+id/cbYork"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -84,7 +85,7 @@
                 app:srcCompat="@drawable/bacon" />
 
             <CheckBox
-                android:id="@+id/checkBox6"
+                android:id="@+id/cbBacon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -105,7 +106,7 @@
                 app:srcCompat="@drawable/pollo" />
 
             <CheckBox
-                android:id="@+id/checkBox7"
+                android:id="@+id/cbPolloParrilla"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -119,7 +120,7 @@
                 app:srcCompat="@drawable/baconcrispy" />
 
             <CheckBox
-                android:id="@+id/checkBox8"
+                android:id="@+id/cbBaconCrispy"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -140,7 +141,7 @@
                 app:srcCompat="@drawable/ternera" />
 
             <CheckBox
-                android:id="@+id/checkBox9"
+                android:id="@+id/cbTernera"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -154,7 +155,7 @@
                 app:srcCompat="@drawable/pollobuffalo" />
 
             <CheckBox
-                android:id="@+id/checkBox10"
+                android:id="@+id/cbPolloBuffalo"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -174,7 +175,7 @@
                 app:srcCompat="@drawable/peperoni" />
 
             <CheckBox
-                android:id="@+id/checkBox11"
+                android:id="@+id/cbPepperoni"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -188,7 +189,7 @@
                 app:srcCompat="@drawable/pulledpork" />
 
             <CheckBox
-                android:id="@+id/checkBox12"
+                android:id="@+id/cbPulledPork"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -209,7 +210,7 @@
                 app:srcCompat="@drawable/anchoas" />
 
             <CheckBox
-                android:id="@+id/checkBox13"
+                android:id="@+id/cbAnchoas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -223,7 +224,7 @@
                 app:srcCompat="@drawable/atun" />
 
             <CheckBox
-                android:id="@+id/checkBox14"
+                android:id="@+id/cbAtun"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -243,7 +244,7 @@
                 app:srcCompat="@drawable/pollovegano" />
 
             <CheckBox
-                android:id="@+id/checkBox15"
+                android:id="@+id/cbVeggiChicken"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -257,7 +258,7 @@
                 app:srcCompat="@drawable/vegeroni" />
 
             <CheckBox
-                android:id="@+id/checkBox16"
+                android:id="@+id/cbVeggeroni"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -277,7 +278,7 @@
                 app:srcCompat="@drawable/champinon" />
 
             <CheckBox
-                android:id="@+id/checkBox17"
+                android:id="@+id/cbChampinon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -291,7 +292,7 @@
                 app:srcCompat="@drawable/aceitunas" />
 
             <CheckBox
-                android:id="@+id/checkBox18"
+                android:id="@+id/cbAceitunasNegras"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -312,7 +313,7 @@
                 app:srcCompat="@drawable/cebolla" />
 
             <CheckBox
-                android:id="@+id/checkBox19"
+                android:id="@+id/cbCebolla"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -326,7 +327,7 @@
                 app:srcCompat="@drawable/cebollacaramelizada" />
 
             <CheckBox
-                android:id="@+id/checkBox20"
+                android:id="@+id/cbCebollaCaramelizada"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -346,7 +347,7 @@
                 app:srcCompat="@drawable/tomate" />
 
             <CheckBox
-                android:id="@+id/checkBox21"
+                android:id="@+id/cbTomate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -360,7 +361,7 @@
                 app:srcCompat="@drawable/pimiento" />
 
             <CheckBox
-                android:id="@+id/checkBox22"
+                android:id="@+id/cbPimientoVerde"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -380,7 +381,7 @@
                 app:srcCompat="@drawable/pina" />
 
             <CheckBox
-                android:id="@+id/checkBox23"
+                android:id="@+id/cbPina"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -394,7 +395,7 @@
                 app:srcCompat="@drawable/maiz" />
 
             <CheckBox
-                android:id="@+id/checkBox24"
+                android:id="@+id/cbMaiz"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -415,7 +416,7 @@
                 app:srcCompat="@drawable/quesoparmesano" />
 
             <CheckBox
-                android:id="@+id/checkBox25"
+                android:id="@+id/cbQuesoParmesano"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -423,7 +424,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btnContinuar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="30sp"
