@@ -116,8 +116,6 @@ public class PizzaPersonalizadaIngredientes extends AppCompatActivity implements
             ingredientes.add(Ingrediente.QUESO_PARMESANO);
         }
 
-        System.out.println(ingredientes.size());
-
         if (ingredientes.size() < 3) {
             AlertDialog.Builder dialogo1 = crearDialogo(
                     "No hay suficientes ingredientes seleccionados",
@@ -134,10 +132,10 @@ public class PizzaPersonalizadaIngredientes extends AppCompatActivity implements
 
         } else {
             Intent intentPersonalizada = new Intent(PizzaPersonalizadaIngredientes.this,
-                    PizzaPersonalizadaIngredientes.class);
+                    ConfirmarPizza.class);
 
             intentPersonalizada.putExtra("usuario", usuario);
-            intentPersonalizada.putExtra("pizza", new Pizza(0));
+            intentPersonalizada.putExtra("pizza", new Pizza(tamano, salsa, queso, ingredientes));
 
             startActivity(intentPersonalizada);
         }

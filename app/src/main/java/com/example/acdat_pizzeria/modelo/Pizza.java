@@ -18,7 +18,7 @@ public class Pizza implements Serializable {
     private Queso queso;
     private ArrayList<Ingrediente> ingredientes;
 
-    public Pizza(Integer idPizza, Tamano tamano, Salsa salsa, Queso queso, ArrayList<Ingrediente> ingredientes) {
+    public Pizza(Tamano tamano, Salsa salsa, Queso queso, ArrayList<Ingrediente> ingredientes) {
         this.idPizza = incrmentId();
         this.tamano = tamano;
         this.salsa = salsa;

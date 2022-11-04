@@ -39,7 +39,7 @@
     <LinearLayout
         android:id="@+id/llIngredientes"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
@@ -423,6 +423,19 @@
                 android:text="@string/QuesoParmesano" />
         </LinearLayout>
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="30dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
         <Button
             android:id="@+id/btnContinuar"
             android:layout_width="match_parent"
@@ -431,7 +444,6 @@
             android:layout_marginEnd="30sp"
             android:height="60sp"
             android:text="@string/continuar" />
-
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
