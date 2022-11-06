@@ -36,8 +36,8 @@
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20sp"
+            android:layout_height="419dp"
+            android:layout_marginTop="100sp"
             android:layout_marginBottom="20sp"
             app:srcCompat="@drawable/ev02hvcwaamekcg" />
 
@@ -86,7 +86,7 @@
                 android:layout_marginEnd="10sp"
                 android:layout_weight="1"
                 android:height="60sp"
-                android:text="@string/Inicio" />
+                android:text="@string/VolverInicio" />
         </LinearLayout>
     </LinearLayout>
 

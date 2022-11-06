@@ -128,7 +128,30 @@ public class PizzaPersonalizadaTamano extends AppCompatActivity implements View.
         }
     }
 
-    private AlertDialog.Builder crearDialogo(String titulo, String mensaje) {
+    public void onBackPressed() {
+
+        AlertDialog.Builder dialogo1 = crearDialogo("Volver al inicio", "¿Está seguro que desea volver al inicio?\nSe perderán los cambios");
+
+        dialogo1.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Intent intentInicio = new Intent(PizzaPersonalizadaTamano.this, MenuOpciones.class);
+                intentInicio.putExtra("usuario", usuario);
+                startActivity(intentInicio);
+            }
+        });
+
+        dialogo1.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+            }
+        });
+
+        dialogo1.show();
+
+    }
+
+    private AlertDialog.Builder crearDialogo(String titulo, String mensaje){
         AlertDialog.Builder dialogo1 = new AlertDialog.Builder(this);
         dialogo1.setTitle(titulo);
         dialogo1.setMessage(mensaje);

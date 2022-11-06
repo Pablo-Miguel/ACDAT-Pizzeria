@@ -3,12 +3,15 @@ package com.example.acdat_pizzeria;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.acdat_pizzeria.daos.DAOPizzas;
 import com.example.acdat_pizzeria.databinding.ActivityPedirPizzaBinding;
 import com.example.acdat_pizzeria.modelo.Pizza;
 import com.example.acdat_pizzeria.modelo.Usuario;
@@ -18,7 +21,7 @@ public class PedirPizza extends AppCompatActivity implements View.OnClickListene
 
     private ActivityPedirPizzaBinding binding;
     private Usuario usuario;
-    private Pizza pizza;
+    private Pizza pizza, pizzaPreferida;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,20 +34,20 @@ public class PedirPizza extends AppCompatActivity implements View.OnClickListene
         usuario = (Usuario) getIntent().getSerializableExtra("usuario");
         pizza = (Pizza) getIntent().getSerializableExtra("pizza");
 
-        Servicio.getInstance();
-
         binding.btnInicio.setOnClickListener(this);
         binding.btnCerrarSesion.setOnClickListener(this);
         binding.btnPizzaFav.setOnClickListener(this);
+
+        pizzaPreferida = Servicio.getInstance().getPizzaFav(usuario);
 
     }
 
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.btnInicio:
-                Intent inntentInicio = new Intent(PedirPizza.this, Inicio.class);
+                Intent inntentInicio = new Intent(PedirPizza.this, MenuOpciones.class);
                 inntentInicio.putExtra("usuario", usuario);
                 startActivity(inntentInicio);
                 break;
@@ -53,17 +56,74 @@ public class PedirPizza extends AppCompatActivity implements View.OnClickListene
                 startActivity(intentPedirPizza);
                 break;
             case R.id.btnPizzaFav:
-                if(!pizza.getFavorita()) {
-                    pizza.setFavorita(true);
-                    Toast t = Toast.makeText(this, "La pizza se ha establecido como favorita",
-                            Toast.LENGTH_SHORT);
-                    t.show();
-                } else {
-                    Toast t = Toast.makeText(this, "La pizza ya está en favoritos",
-                            Toast.LENGTH_SHORT);
-                    t.show();
+                if (DAOPizzas.getInstance().getPizza(pizza) != null) {
+                    if(!DAOPizzas.getInstance().getPizza(pizza).getFavorita()){
+                        DAOPizzas.getInstance().getPizza(pizza).setFavorita(true);
+
+                        AlertDialog.Builder dialogo1 = crearDialogo(
+                                "Pizza favorita",
+                                "Se ha establecido la pizza como favorita");
+
+                        dialogo1.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                            }
+                        });
+
+                        dialogo1.show();
+
+                        if (pizzaPreferida != null) {
+                            pizzaPreferida.setFavorita(false);
+                        }
+
+                    } else {
+
+                        AlertDialog.Builder dialogo1 = crearDialogo(
+                                "Pizza favorita",
+                                "La pizza ya está en favoritos");
+
+                        dialogo1.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                            }
+                        });
+
+                        dialogo1.show();
+                    }
                 }
                 break;
         }
+    }
+
+    public void onBackPressed() {
+
+        AlertDialog.Builder dialogo1 = crearDialogo("Volver al inicio", "¿Está seguro que desea volver al inicio?");
+
+        dialogo1.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Intent intentInicio = new Intent(PedirPizza.this, MenuOpciones.class);
+                intentInicio.putExtra("usuario", usuario);
+                startActivity(intentInicio);
+            }
+        });
+
+        dialogo1.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+            }
+        });
+
+        dialogo1.show();
+
+    }
+
+    private AlertDialog.Builder crearDialogo(String titulo, String mensaje){
+        AlertDialog.Builder dialogo1 = new AlertDialog.Builder(this);
+        dialogo1.setTitle(titulo);
+        dialogo1.setMessage(mensaje);
+        dialogo1.setCancelable(false);
+
+        return dialogo1;
     }
 }

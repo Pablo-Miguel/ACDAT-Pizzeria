@@ -2,6 +2,7 @@ package com.example.acdat_pizzeria.daos;
 
 import android.content.SyncStatusObserver;
 
+import com.example.acdat_pizzeria.modelo.Pizza;
 import com.example.acdat_pizzeria.modelo.Usuario;
 
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ public class DAOPizzas {
 
     private static DAOPizzas dao;
     private static ArrayList<Usuario> listaUsuarios;
+    private static ArrayList<Pizza> listaPizzas;
 
     public static DAOPizzas getInstance() {
 
@@ -19,6 +21,10 @@ public class DAOPizzas {
 
         if(listaUsuarios == null){
             listaUsuarios = new ArrayList<Usuario>();
+        }
+
+        if(listaPizzas == null){
+            listaPizzas = new ArrayList<Pizza>();
         }
 
         return dao;
@@ -32,6 +38,12 @@ public class DAOPizzas {
         }
 
         return listaUsuarios;
+
+    }
+
+    public ArrayList<Pizza> getPizzas(){
+
+        return listaPizzas;
 
     }
 
@@ -58,4 +70,29 @@ public class DAOPizzas {
         return -1;
 
     }
+
+    public int insertarPizza(Pizza pizza) {
+
+        if(DAOPizzas.getInstance().getPizza(pizza) == null){
+            if(listaPizzas.add(pizza)){
+                return 0;
+            }
+        }
+
+        return -1;
+
+    }
+
+    public Pizza getPizza(Pizza pizza) {
+        if(DAOPizzas.getInstance().getPizzas().contains(pizza)){
+            for (Pizza piz : DAOPizzas.getInstance().getPizzas()) {
+                if(pizza.equals(piz)){
+                    return piz;
+                }
+            }
+        }
+
+        return null;
+    }
+
 }

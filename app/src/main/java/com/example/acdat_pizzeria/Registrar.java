@@ -52,9 +52,9 @@ public class Registrar extends AppCompatActivity implements View.OnClickListener
             int comp = Servicio.getInstance().anyadirUsuario(usuario);
 
             if(comp == 0){
-                Intent intentInicio = new Intent(Registrar.this, Inicio.class);
-                intentInicio.putExtra("usuario", usuario);
-                startActivity(intentInicio);
+                Intent intentMenuOpciones = new Intent(Registrar.this, MenuOpciones.class);
+                intentMenuOpciones.putExtra("usuario", usuario);
+                startActivity(intentMenuOpciones);
             }
             else{
                 AlertDialog.Builder dialogo1 = crearDialogo("Usuario existente", "Ya existe un usuario con ese nombre");

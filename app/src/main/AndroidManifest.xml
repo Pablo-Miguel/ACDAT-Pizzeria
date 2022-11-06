@@ -13,6 +13,13 @@
         android:theme="@style/Theme.ACDATPizzeria"
         tools:targetApi="31">
         <activity
+            android:name=".MenuOpciones"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".PedirPizza"
             android:exported="false">
             <meta-data
@@ -42,13 +49,6 @@
         </activity>
         <activity
             android:name=".PizzaPersonalizadaIngredientes"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".PizzaFavorita"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

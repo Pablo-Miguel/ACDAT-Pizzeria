@@ -9,8 +9,9 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.acdat_pizzeria.databinding.ActivityInicioBinding;
-import com.example.acdat_pizzeria.databinding.ActivityRegistrarBinding;
+import com.example.acdat_pizzeria.modelo.Pizza;
 import com.example.acdat_pizzeria.modelo.Usuario;
+import com.example.acdat_pizzeria.servicio.Servicio;
 
 public class Inicio extends AppCompatActivity implements View.OnClickListener {
 
@@ -40,9 +41,23 @@ public class Inicio extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btnFavorita:
-                Intent intentPizzaFavorita = new Intent(Inicio.this, PizzaFavorita.class);
-                intentPizzaFavorita.putExtra("usuario", usuario);
-                startActivity(intentPizzaFavorita);
+                if(Servicio.getInstance().getPizzaFav(usuario) != null){
+                    Intent intentPizzaFavorita = new Intent(Inicio.this, ConfirmarPizza.class);
+                    intentPizzaFavorita.putExtra("usuario", usuario);
+                    intentPizzaFavorita.putExtra("pizza", new Pizza(Servicio.getInstance().getPizzaFav(usuario)));
+                    startActivity(intentPizzaFavorita);
+                }
+                else {
+                    AlertDialog.Builder dialogo1 = crearDialogo("No tiene pizza favorita", "Usted no tiene una pizza favorita aún, por favor, pida una y establecela como favorita");
+
+                    dialogo1.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                        }
+                    });
+
+                    dialogo1.show();
+                }
                 break;
             case R.id.btnPersonalizada:
                 Intent intentPizzaPersonalizada = new Intent(Inicio.this, PizzaPersonalizadaTamano.class);
@@ -60,13 +75,14 @@ public class Inicio extends AppCompatActivity implements View.OnClickListener {
 
     public void onBackPressed() {
 
-        AlertDialog.Builder dialogo1 = crearDialogo("Cerrar sesión", "¿Está seguro que desea cerrar sesión?\nSe perderán los cambios");
+        AlertDialog.Builder dialogo1 = crearDialogo("Volver al inicio", "¿Está seguro que desea volver al inicio?\nSe perderán los cambios");
 
         dialogo1.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Intent intentMainActivity = new Intent(Inicio.this, MainActivity.class);
-                startActivity(intentMainActivity);
+                Intent intentInicio = new Intent(Inicio.this, MenuOpciones.class);
+                intentInicio.putExtra("usuario", usuario);
+                startActivity(intentInicio);
             }
         });
 

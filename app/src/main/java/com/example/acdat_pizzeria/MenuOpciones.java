@@ -6,43 +6,64 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 
-import com.example.acdat_pizzeria.databinding.ActivityPizzaPredeterminadaBinding;
+import com.example.acdat_pizzeria.databinding.ActivityMenuOpcionesBinding;
+import com.example.acdat_pizzeria.modelo.Pizza;
 import com.example.acdat_pizzeria.modelo.Usuario;
+import com.example.acdat_pizzeria.servicio.Servicio;
 
-public class PizzaPredeterminada extends AppCompatActivity implements View.OnClickListener {
+public class MenuOpciones extends AppCompatActivity implements View.OnClickListener {
 
+    private ActivityMenuOpcionesBinding binding;
     private Usuario usuario;
-    private ActivityPizzaPredeterminadaBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityPizzaPredeterminadaBinding.inflate(getLayoutInflater());
+        binding = ActivityMenuOpcionesBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
         getSupportActionBar().hide();
 
         usuario = (Usuario) getIntent().getSerializableExtra("usuario");
 
+        binding.lblUsuario.setText(usuario.getUsuario());
+
+        binding.btnWeb.setOnClickListener(this);
+        binding.btnPizza.setOnClickListener(this);
+        binding.btnConfiguracion.setOnClickListener(this);
+
     }
 
     @Override
     public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.btnWeb:
 
+                break;
+            case R.id.btnPizza:
+                Intent intentInicio = new Intent(MenuOpciones.this, Inicio.class);
+                intentInicio.putExtra("usuario", usuario);
+                startActivity(intentInicio);
+                break;
+            case R.id.btnConfiguracion:
+
+                break;
+
+        }
     }
 
     public void onBackPressed() {
 
-        AlertDialog.Builder dialogo1 = crearDialogo("Volver al inicio", "¿Está seguro que desea volver al inicio?\nSe perderán los cambios");
+        AlertDialog.Builder dialogo1 = crearDialogo("Cerrar sesión", "¿Está seguro que desea cerrar sesión?\nSe perderán los cambios");
 
         dialogo1.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Intent intentInicio = new Intent(PizzaPredeterminada.this, MenuOpciones.class);
-                intentInicio.putExtra("usuario", usuario);
-                startActivity(intentInicio);
+                Intent intentMainActivity = new Intent(MenuOpciones.this, MainActivity.class);
+                startActivity(intentMainActivity);
             }
         });
 

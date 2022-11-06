@@ -67,9 +67,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 if(iniciar){
 
-                    Intent intentInicio = new Intent(MainActivity.this, Inicio.class);
-                    intentInicio.putExtra("usuario", usuario);
-                    startActivity(intentInicio);
+                    Intent intentMenuOpciones = new Intent(MainActivity.this, MenuOpciones.class);
+                    intentMenuOpciones.putExtra("usuario", Servicio.getInstance().getUsuario(usuario));
+                    startActivity(intentMenuOpciones);
 
                 }
                 else{

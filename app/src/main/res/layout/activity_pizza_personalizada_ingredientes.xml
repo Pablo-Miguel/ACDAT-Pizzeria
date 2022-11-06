@@ -2,10 +2,31 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:orientation="horizontal"
     tools:context=".PizzaPersonalizadaIngredientes">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="30dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/btnContinuar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30sp"
+            android:layout_marginEnd="30sp"
+            android:height="60sp"
+            android:text="@string/continuar" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -58,392 +79,395 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+        <androidx.gridlayout.widget.GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20sp"
+            app:columnCount="4"
+            app:rowCount="11">
 
             <ImageView
                 android:id="@+id/imageView5"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="60sp"
+                android:layout_height="48sp"
                 android:layout_weight="1"
+                app:layout_column="0"
+                app:layout_row="0"
                 app:srcCompat="@drawable/jamonyork" />
 
             <CheckBox
                 android:id="@+id/cbYork"
-                android:layout_width="wrap_content"
+                android:layout_width="144sp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/York" />
+                android:text="@string/York"
+                app:layout_column="1"
+                app:layout_row="0" />
 
             <ImageView
                 android:id="@+id/imageView6"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="60sp"
+                android:layout_height="48sp"
                 android:layout_weight="1"
+                app:layout_column="2"
+                app:layout_row="0"
                 app:srcCompat="@drawable/bacon" />
 
             <CheckBox
                 android:id="@+id/cbBacon"
-                android:layout_width="wrap_content"
+                android:layout_width="144sp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/Bacon" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+                android:text="@string/Bacon"
+                app:layout_column="3"
+                app:layout_row="0" />
 
             <ImageView
                 android:id="@+id/imageView7"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="60sp"
+                android:layout_height="48sp"
                 android:layout_weight="1"
+                app:layout_column="0"
+                app:layout_row="1"
                 app:srcCompat="@drawable/pollo" />
 
             <CheckBox
                 android:id="@+id/cbPolloParrilla"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="144sp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/PolloParrilla" />
+                android:text="@string/PolloParrilla"
+                app:layout_column="1"
+                app:layout_row="1" />
 
             <ImageView
                 android:id="@+id/imageView8"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="60sp"
+                android:layout_height="48sp"
                 android:layout_weight="1"
+                app:layout_column="2"
+                app:layout_row="1"
                 app:srcCompat="@drawable/baconcrispy" />
 
             <CheckBox
                 android:id="@+id/cbBaconCrispy"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="144sp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/BaconCrispy" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                android:text="@string/BaconCrispy"
+                app:layout_column="3"
+                app:layout_row="1" />
 
             <ImageView
                 android:id="@+id/imageView9"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="60sp"
+                android:layout_height="48sp"
                 android:layout_weight="1"
+                app:layout_column="0"
+                app:layout_row="2"
                 app:srcCompat="@drawable/ternera" />
 
             <CheckBox
                 android:id="@+id/cbTernera"
-                android:layout_width="wrap_content"
+                android:layout_width="144sp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/ternera" />
+                android:text="@string/ternera"
+                app:layout_column="1"
+                app:layout_row="2" />
 
             <ImageView
                 android:id="@+id/imageView10"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="60sp"
+                android:layout_height="48sp"
                 android:layout_weight="1"
+                app:layout_column="2"
+                app:layout_row="2"
                 app:srcCompat="@drawable/pollobuffalo" />
 
             <CheckBox
                 android:id="@+id/cbPolloBuffalo"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="144sp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/polloBufalo" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                android:text="@string/polloBufalo"
+                app:layout_column="3"
+                app:layout_row="2" />
 
             <ImageView
                 android:id="@+id/imageView11"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="60sp"
+                android:layout_height="48sp"
                 android:layout_weight="1"
+                app:layout_column="0"
+                app:layout_row="3"
                 app:srcCompat="@drawable/peperoni" />
 
             <CheckBox
                 android:id="@+id/cbPepperoni"
-                android:layout_width="wrap_content"
+                android:layout_width="144sp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/pepperoni" />
+                android:text="@string/pepperoni"
+                app:layout_column="1"
+                app:layout_row="3" />
 
             <ImageView
                 android:id="@+id/imageView12"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="60sp"
+                android:layout_height="48sp"
                 android:layout_weight="1"
+                app:layout_column="2"
+                app:layout_row="3"
                 app:srcCompat="@drawable/pulledpork" />
 
             <CheckBox
                 android:id="@+id/cbPulledPork"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="144sp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/Pulledpork" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+                android:text="@string/Pulledpork"
+                app:layout_column="3"
+                app:layout_row="3" />
 
             <ImageView
                 android:id="@+id/imageView13"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="60sp"
+                android:layout_height="48sp"
                 android:layout_weight="1"
+                app:layout_column="0"
+                app:layout_row="4"
                 app:srcCompat="@drawable/anchoas" />
 
             <CheckBox
                 android:id="@+id/cbAnchoas"
-                android:layout_width="wrap_content"
+                android:layout_width="144sp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/anchoas" />
+                android:text="@string/anchoas"
+                app:layout_column="1"
+                app:layout_row="4" />
 
             <ImageView
                 android:id="@+id/imageView14"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="60sp"
+                android:layout_height="48sp"
                 android:layout_weight="1"
+                app:layout_column="2"
+                app:layout_row="4"
                 app:srcCompat="@drawable/atun" />
 
             <CheckBox
                 android:id="@+id/cbAtun"
-                android:layout_width="wrap_content"
+                android:layout_width="144sp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/atun" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                android:text="@string/atun"
+                app:layout_column="3"
+                app:layout_row="4" />
 
             <ImageView
                 android:id="@+id/imageView15"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="60sp"
+                android:layout_height="48sp"
                 android:layout_weight="1"
+                app:layout_column="0"
+                app:layout_row="5"
                 app:srcCompat="@drawable/pollovegano" />
 
             <CheckBox
                 android:id="@+id/cbVeggiChicken"
-                android:layout_width="wrap_content"
+                android:layout_width="144sp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/VeggiChicken" />
+                android:text="@string/VeggiChicken"
+                app:layout_column="1"
+                app:layout_row="5" />
 
             <ImageView
                 android:id="@+id/imageView16"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="60sp"
+                android:layout_height="48sp"
                 android:layout_weight="1"
+                app:layout_column="2"
+                app:layout_row="5"
                 app:srcCompat="@drawable/vegeroni" />
 
             <CheckBox
                 android:id="@+id/cbVeggeroni"
-                android:layout_width="wrap_content"
+                android:layout_width="144sp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/Veggeroni" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                android:text="@string/Veggeroni"
+                app:layout_column="3"
+                app:layout_row="5" />
 
             <ImageView
                 android:id="@+id/imageView17"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="60sp"
+                android:layout_height="48sp"
                 android:layout_weight="1"
+                app:layout_column="0"
+                app:layout_row="6"
                 app:srcCompat="@drawable/champinon" />
 
             <CheckBox
                 android:id="@+id/cbChampinon"
-                android:layout_width="wrap_content"
+                android:layout_width="144sp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/champinon" />
+                android:text="@string/champinon"
+                app:layout_column="1"
+                app:layout_row="6" />
 
             <ImageView
                 android:id="@+id/imageView18"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="60sp"
+                android:layout_height="48sp"
                 android:layout_weight="1"
+                app:layout_column="2"
+                app:layout_row="6"
                 app:srcCompat="@drawable/aceitunas" />
 
             <CheckBox
                 android:id="@+id/cbAceitunasNegras"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="144sp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/aceitunas" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+                android:text="@string/aceitunas"
+                app:layout_column="3"
+                app:layout_row="6" />
 
             <ImageView
                 android:id="@+id/imageView19"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="60sp"
+                android:layout_height="48sp"
                 android:layout_weight="1"
+                app:layout_column="0"
+                app:layout_row="7"
                 app:srcCompat="@drawable/cebolla" />
 
             <CheckBox
                 android:id="@+id/cbCebolla"
-                android:layout_width="wrap_content"
+                android:layout_width="144sp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/cebolla" />
+                android:text="@string/cebolla"
+                app:layout_column="1"
+                app:layout_row="7" />
 
             <ImageView
                 android:id="@+id/imageView20"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="60sp"
+                android:layout_height="48sp"
                 android:layout_weight="1"
+                app:layout_column="2"
+                app:layout_row="7"
                 app:srcCompat="@drawable/cebollacaramelizada" />
 
             <CheckBox
                 android:id="@+id/cbCebollaCaramelizada"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="144sp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/Cebollacaramelizada" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                android:text="@string/Cebollacaramelizada"
+                app:layout_column="3"
+                app:layout_row="7" />
 
             <ImageView
                 android:id="@+id/imageView21"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="60sp"
+                android:layout_height="48sp"
                 android:layout_weight="1"
+                app:layout_column="0"
+                app:layout_row="8"
                 app:srcCompat="@drawable/tomate" />
 
             <CheckBox
                 android:id="@+id/cbTomate"
-                android:layout_width="wrap_content"
+                android:layout_width="144sp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/tomate" />
+                android:text="@string/tomate"
+                app:layout_column="1"
+                app:layout_row="8" />
 
             <ImageView
                 android:id="@+id/imageView22"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="60sp"
+                android:layout_height="48sp"
                 android:layout_weight="1"
+                app:layout_column="2"
+                app:layout_row="8"
                 app:srcCompat="@drawable/pimiento" />
 
             <CheckBox
                 android:id="@+id/cbPimientoVerde"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="144sp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/pimiento" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+                android:text="@string/pimiento"
+                app:layout_column="3"
+                app:layout_row="8" />
 
             <ImageView
                 android:id="@+id/imageView24"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="60sp"
+                android:layout_height="48sp"
                 android:layout_weight="1"
+                app:layout_column="0"
+                app:layout_row="9"
                 app:srcCompat="@drawable/pina" />
 
             <CheckBox
                 android:id="@+id/cbPina"
-                android:layout_width="wrap_content"
+                android:layout_width="144sp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/pina" />
+                android:text="@string/pina"
+                app:layout_column="1"
+                app:layout_row="9" />
 
             <ImageView
                 android:id="@+id/imageView25"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="60sp"
+                android:layout_height="48sp"
                 android:layout_weight="1"
+                app:layout_column="2"
+                app:layout_row="9"
                 app:srcCompat="@drawable/maiz" />
 
             <CheckBox
                 android:id="@+id/cbMaiz"
-                android:layout_width="wrap_content"
+                android:layout_width="144sp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/miaz" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="30sp"
-            android:orientation="horizontal">
+                android:text="@string/miaz"
+                app:layout_column="3"
+                app:layout_row="9" />
 
             <ImageView
                 android:id="@+id/imageView26"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="205dp"
+                android:layout_height="49dp"
                 android:layout_weight="1"
+                app:layout_column="0"
+                app:layout_columnSpan="2"
+                app:layout_row="10"
                 app:srcCompat="@drawable/quesoparmesano" />
 
             <CheckBox
                 android:id="@+id/cbQuesoParmesano"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="204dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/QuesoParmesano" />
-        </LinearLayout>
+                android:text="@string/QuesoParmesano"
+                app:layout_column="2"
+                app:layout_columnSpan="2"
+                app:layout_row="10" />
+        </androidx.gridlayout.widget.GridLayout>
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="56dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="30dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <Button
-            android:id="@+id/btnContinuar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30sp"
-            android:layout_marginEnd="30sp"
-            android:height="60sp"
-            android:text="@string/continuar" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

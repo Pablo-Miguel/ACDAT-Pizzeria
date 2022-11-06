@@ -30,6 +30,17 @@ public class Pizza implements Serializable {
         this.favorita = false;
     }
 
+    public Pizza(Pizza pizza) {
+        this.idPizza = incrmentId();
+        this.tamano = pizza.getTamano();
+        this.salsa = pizza.getSalsa();
+        this.queso = pizza.getQueso();
+        this.ingredientes = pizza.getIngredientes();
+        this.usuario = pizza.getUsuario();
+        this.favorita = pizza.getFavorita();
+        pizza.setFavorita(false);
+    }
+
     public Pizza(Integer idPizza) {
         this.idPizza = idPizza;
     }

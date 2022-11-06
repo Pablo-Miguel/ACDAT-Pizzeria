@@ -16,8 +16,8 @@ public class Usuario implements Serializable {
         this.password = password;
     }
 
-    public Usuario(Integer id) {
-        this.id = id;
+    public Usuario(String usuario) {
+        this.usuario = usuario;
     }
 
     private Integer incrmentId(){
@@ -51,14 +51,14 @@ public class Usuario implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Usuario usuario = (Usuario) o;
-        return id.equals(usuario.id);
+        if (!(o instanceof Usuario)) return false;
+        Usuario usuario1 = (Usuario) o;
+        return getUsuario().equals(usuario1.getUsuario());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(getUsuario());
     }
 
     @Override
