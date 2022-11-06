@@ -1,17 +1,24 @@
 package com.example.acdat_pizzeria.modelo.enums;
 
 public enum Ingrediente {
-    YORK(2.0), BACON(2.0), POLLO_A_LA_PARRILLA(2.0), BACON_CRISPY(2.0),
-    TERNERA(2.0), POLLO_BUFFALO(2.0), PEPPERONI(2.0), PULLED_PORK(2.0),
-    ANCHOAS(2.0), ATUN(2.0), VEGGICHICKEN(2.0), VEGGERONI(2.0),
-    CHAMPINON(2.0), ACEITUNAS_NEGRAS(2.0), CEBOLLA(2.0), CEBOLLA_CARAMELIZADA(2.0),
-    TOMATE(2.0), PIMIENTO_VERDE(2.0), PINA(2.0), MAIZ(2.0),
-    QUESO_PARMESANO(2.0);
+    YORK(2.0, "York"), BACON(2.0, "Bacon"),
+    POLLO_A_LA_PARRILLA(2.0, "Pollo a la parrilla"), BACON_CRISPY(2.0, "Bacon Crispy"),
+    TERNERA(2.0, "Ternera"), POLLO_BUFFALO(2.0, "Pollo buffalo"),
+    PEPPERONI(2.0, "Pepperoni"), PULLED_PORK(2.0, "Pulled pork"),
+    ANCHOAS(2.0, "Anchoas"), ATUN(2.0, "Atun"),
+    VEGGICHICKEN(2.0, "VeggiChicken"), VEGGERONI(2.0, "Veggeroni"),
+    CHAMPINON(2.0, "Champiñon"), ACEITUNAS_NEGRAS(2.0, "Aceitunas negras"),
+    CEBOLLA(2.0, "Cebolla"), CEBOLLA_CARAMELIZADA(2.0, "Cebolla caramelizada"),
+    TOMATE(2.0, "Tomate"), PIMIENTO_VERDE(2.0, "Pimiento verde"),
+    PINA(2.0, "Piña"), MAIZ(2.0, "Maiz"),
+    QUESO_PARMESANO(2.0, "Queso Parmesano");
 
     private Double precioInicial;
+    private String nombre;
 
-    Ingrediente(Double precioInicial) {
+    Ingrediente(Double precioInicial, String nombre) {
         this.precioInicial = precioInicial;
+        this.nombre = nombre;
     }
 
     public Double getPrecioInicial() {
@@ -21,4 +28,9 @@ public enum Ingrediente {
     public void setPrecioInicial(Double precioInicial) {
         this.precioInicial = precioInicial;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
 }

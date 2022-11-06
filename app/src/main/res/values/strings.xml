@@ -61,4 +61,9 @@
     <string name="Pizza">Su pizza está lista</string>
     <string name="Aceptar">Aceptar</string>
     <string name="Cancelar">Cancelar</string>
+    <string name="Precio">Precio final</string>
+    <string name="PedidoCamino">¡¡¡El pedido está en camino!!!</string>
+    <string name="CerrarSesion">Cerrar Sesión</string>
+    <string name="Inicio">Inicio</string>
+    <string name="EstablecerFav">Establecer como pizza favorita</string>
 </resources>

@@ -135,7 +135,7 @@ public class PizzaPersonalizadaIngredientes extends AppCompatActivity implements
                     ConfirmarPizza.class);
 
             intentPersonalizada.putExtra("usuario", usuario);
-            intentPersonalizada.putExtra("pizza", new Pizza(tamano, salsa, queso, ingredientes));
+            intentPersonalizada.putExtra("pizza", new Pizza(tamano, salsa, queso, ingredientes, usuario));
 
             startActivity(intentPersonalizada);
         }

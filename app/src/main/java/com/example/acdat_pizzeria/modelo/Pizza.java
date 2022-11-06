@@ -17,13 +17,17 @@ public class Pizza implements Serializable {
     private Salsa salsa;
     private Queso queso;
     private ArrayList<Ingrediente> ingredientes;
+    private Usuario usuario;
+    private Boolean favorita;
 
-    public Pizza(Tamano tamano, Salsa salsa, Queso queso, ArrayList<Ingrediente> ingredientes) {
+    public Pizza(Tamano tamano, Salsa salsa, Queso queso, ArrayList<Ingrediente> ingredientes, Usuario usuario) {
         this.idPizza = incrmentId();
         this.tamano = tamano;
         this.salsa = salsa;
         this.queso = queso;
         this.ingredientes = ingredientes;
+        this.usuario = usuario;
+        this.favorita = false;
     }
 
     public Pizza(Integer idPizza) {
@@ -36,6 +40,10 @@ public class Pizza implements Serializable {
 
     public Integer getIdPizza() {
         return idPizza;
+    }
+
+    public void setIdPizza(Integer idPizza) {
+        this.idPizza = idPizza;
     }
 
     public Tamano getTamano() {
@@ -70,6 +78,37 @@ public class Pizza implements Serializable {
         this.ingredientes = ingredientes;
     }
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Boolean getFavorita() {
+        return favorita;
+    }
+
+    public void setFavorita(Boolean favorita) {
+        this.favorita = favorita;
+    }
+
+    public Double getPrecio() {
+        Double precio = 0.0;
+
+        precio += getTamano().getPrecioInicial();
+        precio += getSalsa().getPrecioInicial();
+        precio += getQueso().getPrecioInicial();
+
+        for(int i = 0; i < getIngredientes().size(); i++){
+            precio += getIngredientes().get(i).getPrecioInicial();
+        }
+
+        return precio;
+
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -85,13 +124,18 @@ public class Pizza implements Serializable {
 
     @Override
     public String toString() {
-        return "Pizza{" +
-                "idPizza=" + idPizza +
-                ", tamano=" + tamano +
-                ", salsa=" + salsa +
-                ", queso=" + queso +
-                ", ingredientes=" + ingredientes +
-                '}';
+        StringBuilder cadena = new StringBuilder();
+
+        cadena.append("TAMAÑO:\n\t - " + getTamano().getNombre() + "\n");
+        cadena.append("SALSA:\n\t - " + getSalsa().getNombre() + "\n");
+        cadena.append("QUESO:\n\t - " + getQueso().getNombre() + "\n");
+        cadena.append("INGREDIENTES:\n");
+
+        for(int i = 0; i < getIngredientes().size(); i++){
+            cadena.append("\t - " + getIngredientes().get(i).getNombre() + "\n");
+        }
+
+        return cadena.toString();
     }
 
 }

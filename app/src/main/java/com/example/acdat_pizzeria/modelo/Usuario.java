@@ -5,17 +5,23 @@ import java.util.Objects;
 
 public class Usuario implements Serializable {
 
-    //private Integer id;
+    private static Integer contId = 0;
+    private Integer id;
     private String email, usuario, password;
 
     public Usuario(String email, String usuario, String password) {
+        this.id = incrmentId();
         this.email = email;
         this.usuario = usuario;
         this.password = password;
     }
 
-    public Usuario(String usuario) {
-        this.usuario = usuario;
+    public Usuario(Integer id) {
+        this.id = id;
+    }
+
+    private Integer incrmentId(){
+        return Usuario.contId++;
     }
 
     public String getEmail() {
@@ -46,13 +52,13 @@ public class Usuario implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Usuario usuario1 = (Usuario) o;
-        return usuario.equals(usuario1.usuario);
+        Usuario usuario = (Usuario) o;
+        return id.equals(usuario.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(usuario);
+        return Objects.hash(id);
     }
 
     @Override
