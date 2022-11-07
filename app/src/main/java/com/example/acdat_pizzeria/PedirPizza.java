@@ -2,6 +2,7 @@ package com.example.acdat_pizzeria;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -27,12 +28,20 @@ public class PedirPizza extends AppCompatActivity implements View.OnClickListene
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        preferencias = getSharedPreferences("misDatos", Context.MODE_PRIVATE);
+
+        if(preferencias.getBoolean("modoOscuro", false)){
+            this.getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
+        else {
+            this.getDelegate().setLocalNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+
         binding = ActivityPedirPizzaBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
         getSupportActionBar().hide();
-
-        preferencias = getSharedPreferences("misDatos", Context.MODE_PRIVATE);
 
         usuario = (Usuario) getIntent().getSerializableExtra("usuario");
         pizza = (Pizza) getIntent().getSerializableExtra("pizza");
