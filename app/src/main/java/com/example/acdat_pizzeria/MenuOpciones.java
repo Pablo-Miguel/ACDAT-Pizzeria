@@ -3,8 +3,11 @@ package com.example.acdat_pizzeria;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -18,6 +21,7 @@ public class MenuOpciones extends AppCompatActivity implements View.OnClickListe
 
     private ActivityMenuOpcionesBinding binding;
     private Usuario usuario;
+    private SharedPreferences preferencias;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +33,16 @@ public class MenuOpciones extends AppCompatActivity implements View.OnClickListe
 
         usuario = (Usuario) getIntent().getSerializableExtra("usuario");
 
+        preferencias = getSharedPreferences("misDatos", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferencias.edit();
+        editor.putString("usuario", usuario.getUsuario());
+        editor.putString("password", usuario.getPassword());
+        editor.commit();
+
         binding.lblUsuario.setText(usuario.getUsuario());
 
         binding.btnWeb.setOnClickListener(this);
+        binding.btnLlamar.setOnClickListener(this);
         binding.btnPizza.setOnClickListener(this);
         binding.btnConfiguracion.setOnClickListener(this);
 
@@ -41,7 +52,15 @@ public class MenuOpciones extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btnWeb:
-
+                String url = "http://www.pizzerialabriciola.com/";
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
+                break;
+            case R.id.btnLlamar:
+                String phone = "+34934321933";
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null));
+                startActivity(intent);
                 break;
             case R.id.btnPizza:
                 Intent intentInicio = new Intent(MenuOpciones.this, Inicio.class);
@@ -49,7 +68,9 @@ public class MenuOpciones extends AppCompatActivity implements View.OnClickListe
                 startActivity(intentInicio);
                 break;
             case R.id.btnConfiguracion:
-
+                Intent intentConfiguracion = new Intent(MenuOpciones.this, Configuracion.class);
+                intentConfiguracion.putExtra("usuario", usuario);
+                startActivity(intentConfiguracion);
                 break;
 
         }
@@ -62,6 +83,11 @@ public class MenuOpciones extends AppCompatActivity implements View.OnClickListe
         dialogo1.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+                SharedPreferences.Editor editor = preferencias.edit();
+                editor.putBoolean( "recordar", false);
+                editor.putString("usuario", "");
+                editor.putString("password", "");
+                editor.commit();
                 Intent intentMainActivity = new Intent(MenuOpciones.this, MainActivity.class);
                 startActivity(intentMainActivity);
             }

@@ -3,8 +3,10 @@ package com.example.acdat_pizzeria;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
@@ -17,6 +19,7 @@ import java.io.Serializable;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, Serializable {
 
     private ActivityMainBinding binding;
+    private SharedPreferences preferencias;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +28,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         View view = binding.getRoot();
         setContentView(view);
         getSupportActionBar().hide();
+
+        preferencias = getSharedPreferences("misDatos", Context.MODE_PRIVATE);
+
+        if(preferencias.getBoolean("recordar", false)){
+            Intent intentMenuOpciones = new Intent(MainActivity.this, MenuOpciones.class);
+            intentMenuOpciones.putExtra("usuario", Servicio.getInstance().getUsuario(new Usuario(preferencias.getString("usuario", ""))));
+            intentMenuOpciones.putExtra("recordar", true);
+            startActivity(intentMenuOpciones);
+        }
+
         binding.lblRegistrate.setOnClickListener(this);
         binding.btnIniciarSesion.setOnClickListener(this);
     }
@@ -66,6 +79,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Boolean iniciar = Servicio.getInstance().getUsuario(usuario).getPassword().equals(binding.edTextPassword.getText().toString());
 
                 if(iniciar){
+
+                    SharedPreferences.Editor editor = preferencias.edit();
+                    editor.putBoolean( "recordar", binding.cbRecordar.isChecked());
+                    editor.commit();
 
                     Intent intentMenuOpciones = new Intent(MainActivity.this, MenuOpciones.class);
                     intentMenuOpciones.putExtra("usuario", Servicio.getInstance().getUsuario(usuario));

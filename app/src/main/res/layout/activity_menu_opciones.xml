@@ -86,6 +86,16 @@
             android:text="@string/PaginaWeb" />
 
         <Button
+            android:id="@+id/btnLlamar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30sp"
+            android:layout_marginTop="20sp"
+            android:layout_marginEnd="30sp"
+            android:height="70sp"
+            android:text="@string/llamar" />
+
+        <Button
             android:id="@+id/btnPizza"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

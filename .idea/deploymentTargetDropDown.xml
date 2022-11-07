@@ -7,11 +7,11 @@
         <deviceKey>
           <Key>
             <type value="VIRTUAL_DEVICE_PATH" />
-            <value value="C:\Users\Nitro\.android\avd\Redmi_Note_8_Pro_API_33.avd" />
+            <value value="C:\Users\Nitro\.android\avd\Pixel_3a_API_33_x86_64.avd" />
           </Key>
         </deviceKey>
       </Target>
     </targetSelectedWithDropDown>
-    <timeTargetWasSelectedWithDropDown value="2022-10-27T21:33:53.825540400Z" />
+    <timeTargetWasSelectedWithDropDown value="2022-11-07T16:05:57.530349400Z" />
   </component>
 </project>

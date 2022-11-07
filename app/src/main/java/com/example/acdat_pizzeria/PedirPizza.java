@@ -22,6 +22,7 @@ public class PedirPizza extends AppCompatActivity implements View.OnClickListene
     private ActivityPedirPizzaBinding binding;
     private Usuario usuario;
     private Pizza pizza, pizzaPreferida;
+    private SharedPreferences preferencias;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,8 @@ public class PedirPizza extends AppCompatActivity implements View.OnClickListene
         View view = binding.getRoot();
         setContentView(view);
         getSupportActionBar().hide();
+
+        preferencias = getSharedPreferences("misDatos", Context.MODE_PRIVATE);
 
         usuario = (Usuario) getIntent().getSerializableExtra("usuario");
         pizza = (Pizza) getIntent().getSerializableExtra("pizza");
@@ -52,13 +55,18 @@ public class PedirPizza extends AppCompatActivity implements View.OnClickListene
                 startActivity(inntentInicio);
                 break;
             case R.id.btnCerrarSesion:
+                SharedPreferences.Editor editor = preferencias.edit();
+                editor.putBoolean( "recordar", false);
+                editor.putString("usuario", "");
+                editor.putString("password", "");
+                editor.commit();
                 Intent intentPedirPizza = new Intent(PedirPizza.this, MainActivity.class);
                 startActivity(intentPedirPizza);
                 break;
             case R.id.btnPizzaFav:
-                if (DAOPizzas.getInstance().getPizza(pizza) != null) {
-                    if(!DAOPizzas.getInstance().getPizza(pizza).getFavorita()){
-                        DAOPizzas.getInstance().getPizza(pizza).setFavorita(true);
+                if (Servicio.getInstance().getPizza(pizza) != null) {
+                    if(!Servicio.getInstance().getPizza(pizza).getFavorita()){
+                        Servicio.getInstance().getPizza(pizza).setFavorita(true);
 
                         AlertDialog.Builder dialogo1 = crearDialogo(
                                 "Pizza favorita",

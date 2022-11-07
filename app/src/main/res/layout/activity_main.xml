@@ -85,8 +85,7 @@
             android:layout_marginEnd="10sp"
             android:autofillHints=""
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="admin" />
+            android:inputType="textPersonName" />
 
         <TextView
             android:id="@+id/textView5"
@@ -108,8 +107,15 @@
             android:layout_marginBottom="10sp"
             android:autofillHints=""
             android:ems="10"
-            android:inputType="textPassword"
-            android:text="1234" />
+            android:inputType="textPassword" />
+
+        <CheckBox
+            android:id="@+id/cbRecordar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10sp"
+            android:layout_marginEnd="10sp"
+            android:text="@string/Recordar" />
 
         <Button
             android:id="@+id/btnIniciarSesion"
