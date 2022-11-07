@@ -40,6 +40,12 @@ public class Servicio {
 
     }
 
+    public ArrayList<Pizza> getPizzasPredeterminadas(){
+
+        return DAOPizzas.getInstance().getPizzasPredeterminadas();
+
+    }
+
     public Usuario getUsuario(Usuario usuario){
 
         return DAOPizzas.getInstance().getUsuario(usuario);

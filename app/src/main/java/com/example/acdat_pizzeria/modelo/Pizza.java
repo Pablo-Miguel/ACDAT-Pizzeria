@@ -19,6 +19,7 @@ public class Pizza implements Serializable {
     private ArrayList<Ingrediente> ingredientes;
     private Usuario usuario;
     private Boolean favorita;
+    private String nombre;
 
     public Pizza(Tamano tamano, Salsa salsa, Queso queso, ArrayList<Ingrediente> ingredientes, Usuario usuario) {
         this.idPizza = incrmentId();
@@ -28,6 +29,27 @@ public class Pizza implements Serializable {
         this.ingredientes = ingredientes;
         this.usuario = usuario;
         this.favorita = false;
+        this.nombre = "Predeterminada";
+    }
+
+    public Pizza(Salsa salsa, Queso queso, ArrayList<Ingrediente> ingredientes, String nombre) {
+        this.idPizza = incrmentId();
+        this.salsa = salsa;
+        this.queso = queso;
+        this.ingredientes = ingredientes;
+        this.favorita = false;
+        this.nombre = nombre;
+    }
+
+    public Pizza(Tamano tamano, Salsa salsa, Queso queso, ArrayList<Ingrediente> ingredientes, Usuario usuario, String nombre) {
+        this.idPizza = incrmentId();
+        this.tamano = tamano;
+        this.salsa = salsa;
+        this.queso = queso;
+        this.ingredientes = ingredientes;
+        this.usuario = usuario;
+        this.favorita = false;
+        this.nombre = nombre;
     }
 
     public Pizza(Pizza pizza) {
@@ -38,6 +60,7 @@ public class Pizza implements Serializable {
         this.ingredientes = pizza.getIngredientes();
         this.usuario = pizza.getUsuario();
         this.favorita = pizza.getFavorita();
+        this.nombre = pizza.getNombre();
         pizza.setFavorita(false);
     }
 
@@ -103,6 +126,14 @@ public class Pizza implements Serializable {
 
     public void setFavorita(Boolean favorita) {
         this.favorita = favorita;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public Double getPrecio() {

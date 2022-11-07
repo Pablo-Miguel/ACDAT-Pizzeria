@@ -4,6 +4,9 @@ import android.content.SyncStatusObserver;
 
 import com.example.acdat_pizzeria.modelo.Pizza;
 import com.example.acdat_pizzeria.modelo.Usuario;
+import com.example.acdat_pizzeria.modelo.enums.Ingrediente;
+import com.example.acdat_pizzeria.modelo.enums.Queso;
+import com.example.acdat_pizzeria.modelo.enums.Salsa;
 
 import java.util.ArrayList;
 
@@ -12,6 +15,7 @@ public class DAOPizzas {
     private static DAOPizzas dao;
     private static ArrayList<Usuario> listaUsuarios;
     private static ArrayList<Pizza> listaPizzas;
+    private static ArrayList<Pizza> listaPizzasPredeterminadas;
 
     public static DAOPizzas getInstance() {
 
@@ -25,6 +29,10 @@ public class DAOPizzas {
 
         if(listaPizzas == null){
             listaPizzas = new ArrayList<Pizza>();
+        }
+
+        if(listaPizzasPredeterminadas == null){
+            listaPizzasPredeterminadas = new ArrayList<Pizza>();
         }
 
         return dao;
@@ -44,6 +52,52 @@ public class DAOPizzas {
     public ArrayList<Pizza> getPizzas(){
 
         return listaPizzas;
+
+    }
+
+    public ArrayList<Pizza> getPizzasPredeterminadas(){
+
+        if(listaPizzasPredeterminadas.isEmpty()){
+
+            ArrayList<Ingrediente> ingredientesPecadoCarnal = new ArrayList<Ingrediente>();
+            ingredientesPecadoCarnal.add(Ingrediente.POLLO_BUFFALO);
+            ingredientesPecadoCarnal.add(Ingrediente.BACON);
+            ingredientesPecadoCarnal.add(Ingrediente.PEPPERONI);
+            ingredientesPecadoCarnal.add(Ingrediente.YORK);
+
+            ArrayList<Ingrediente> ingredientesCarbonara = new ArrayList<Ingrediente>();
+            ingredientesCarbonara.add(Ingrediente.BACON);
+            ingredientesCarbonara.add(Ingrediente.CHAMPINON);
+            ingredientesCarbonara.add(Ingrediente.CEBOLLA);
+
+            ArrayList<Ingrediente> ingredientesExtravaganzza = new ArrayList<Ingrediente>();
+            ingredientesExtravaganzza.add(Ingrediente.POLLO_BUFFALO);
+            ingredientesExtravaganzza.add(Ingrediente.BACON);
+            ingredientesExtravaganzza.add(Ingrediente.PEPPERONI);
+            ingredientesExtravaganzza.add(Ingrediente.YORK);
+            ingredientesExtravaganzza.add(Ingrediente.CEBOLLA);
+            ingredientesExtravaganzza.add(Ingrediente.PIMIENTO_VERDE);
+            ingredientesExtravaganzza.add(Ingrediente.CHAMPINON);
+            ingredientesExtravaganzza.add(Ingrediente.ACEITUNAS_NEGRAS);
+
+            ArrayList<Ingrediente> ingredientesBarbacoa = new ArrayList<Ingrediente>();
+            ingredientesBarbacoa.add(Ingrediente.POLLO_BUFFALO);
+            ingredientesBarbacoa.add(Ingrediente.BACON);
+            ingredientesBarbacoa.add(Ingrediente.CEBOLLA);
+            ingredientesBarbacoa.add(Ingrediente.MAIZ);
+
+            listaPizzasPredeterminadas.add(new Pizza(Salsa.SALSA_DE_TOMATE, Queso.MOZZARELLA,
+                    ingredientesPecadoCarnal, "Pecado Carnal"));
+            listaPizzasPredeterminadas.add(new Pizza(Salsa.CREMA_FRESCA, Queso.MOZZARELLA,
+                    ingredientesCarbonara, "Carbonara"));
+            listaPizzasPredeterminadas.add(new Pizza(Salsa.SALSA_DE_TOMATE, Queso.MOZZARELLA,
+                    ingredientesExtravaganzza, "Extravaganzza"));
+            listaPizzasPredeterminadas.add(new Pizza(Salsa.BBQ_ORIGINAL, Queso.MOZZARELLA,
+                    ingredientesBarbacoa, "Barbacoa"));
+
+        }
+
+        return listaPizzasPredeterminadas;
 
     }
 
