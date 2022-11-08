@@ -4,7 +4,7 @@ import com.example.acdat_pizzeria.modelo.Pizza;
 import com.example.acdat_pizzeria.modelo.enums.Ingrediente;
 import com.example.acdat_pizzeria.modelo.enums.Queso;
 import com.example.acdat_pizzeria.modelo.enums.Salsa;
-import com.example.acdat_pizzeria.modelo.kotlin.Usuario;
+import com.example.acdat_pizzeria.modelo.Usuario;
 
 import java.util.ArrayList;
 

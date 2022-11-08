@@ -6,7 +6,6 @@ import com.example.acdat_pizzeria.modelo.enums.Queso
 import com.example.acdat_pizzeria.modelo.enums.Salsa
 import com.example.acdat_pizzeria.modelo.enums.Tamano
 import java.io.Serializable
-import java.util.*
 
 class Pizza : Serializable {
 
@@ -90,6 +89,70 @@ class Pizza : Serializable {
 
     private fun incrmentId(): Int {
         return contId++
+    }
+
+    fun getIdPizza(): Int {
+        return idPizza
+    }
+
+    fun setIdPizza(idPizza: Int) {
+        this.idPizza = idPizza
+    }
+
+    fun getTamano(): Tamano {
+        return tamano
+    }
+
+    fun setTamano(tamano: Tamano) {
+        this.tamano = tamano
+    }
+
+    fun getSalsa(): Salsa {
+        return salsa
+    }
+
+    fun setSalsa(salsa: Salsa) {
+        this.salsa = salsa
+    }
+
+    fun getQueso(): Queso {
+        return queso
+    }
+
+    fun setQueso(queso: Queso) {
+        this.queso = queso
+    }
+
+    fun getIngredientes(): ArrayList<Ingrediente> {
+        return ingredientes
+    }
+
+    fun setIngredientes(ingredientes: ArrayList<Ingrediente>) {
+        this.ingredientes = ingredientes
+    }
+
+    fun getUsuario(): Usuario {
+        return usuario
+    }
+
+    fun setUsuario(usuario: Usuario) {
+        this.usuario = usuario
+    }
+
+    fun getFavorita(): Boolean? {
+        return favorita
+    }
+
+    fun setFavorita(favorita: Boolean) {
+        this.favorita = favorita
+    }
+
+    fun getNombre(): String {
+        return nombre
+    }
+
+    fun setNombre(nombre: String) {
+        this.nombre = nombre
     }
 
     val precio: Double

@@ -16,8 +16,8 @@ import android.widget.ListView;
 
 import com.example.acdat_pizzeria.databinding.ActivityPizzaPredeterminadaBinding;
 import com.example.acdat_pizzeria.modelo.Pizza;
-import com.example.acdat_pizzeria.modelo.Usuario;
 import com.example.acdat_pizzeria.modelo.enums.Tamano;
+import com.example.acdat_pizzeria.modelo.Usuario;
 import com.example.acdat_pizzeria.servicio.Servicio;
 
 import java.util.ArrayList;
