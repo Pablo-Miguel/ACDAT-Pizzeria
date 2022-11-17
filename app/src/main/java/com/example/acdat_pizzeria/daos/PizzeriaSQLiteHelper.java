@@ -4,25 +4,43 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import androidx.annotation.Nullable;
+import com.example.acdat_pizzeria.daos.data.PizzaEntry;
+import com.example.acdat_pizzeria.daos.data.UsuarioEntry;
+import com.example.acdat_pizzeria.modelo.Usuario;
 
 public class PizzeriaSQLiteHelper extends SQLiteOpenHelper {
 
-    String sqlCreate = "CREATE TABLE \"Usuario\" (\n" +
-            "\t\"id_usuario\"\tINTEGER,\n" +
-            "\t\"email\"\tTEXT NOT NULL,\n" +
-            "\t\"usuario\"\tTEXT NOT NULL UNIQUE,\n" +
-            "\t\"password\"\tINTEGER NOT NULL,\n" +
-            "\tPRIMARY KEY(\"id_usuario\" AUTOINCREMENT))";
+    public static final int DATABASE_VERSION = 1;
+    public static final String DATABASE_NAME = "PizzeriaServidor.db";
 
-    public PizzeriaSQLiteHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+    public PizzeriaSQLiteHelper(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+
 
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL(sqlCreate);
+        sqLiteDatabase.execSQL("CREATE TABLE " + UsuarioEntry.TABLE_NAME + " ("
+                + UsuarioEntry.ID_USUARIO + "INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + UsuarioEntry.EMAIL + "TEXT NOT NULL,"
+                + UsuarioEntry.USUARIO + "TEXT NOT NULL UNIQUE,"
+                + UsuarioEntry.PASSWORD + "INTEGER NOT NULL)");
+        sqLiteDatabase.execSQL("CREATE TABLE " + PizzaEntry.TABLE_NAME + " ("
+                + PizzaEntry.ID_PIZZA + "INTEGER,"
+                + PizzaEntry.TAMANO + "INTEGER,"
+                + PizzaEntry.SALSA + "INTEGER NOT NULL,"
+                + PizzaEntry.QUESO + "INTEGER NOT NULL,"
+                + PizzaEntry.USUARIO + "INTEGER,"
+                + PizzaEntry.FAVORITA + "INTEGER NOT NULL,"
+                + PizzaEntry.NOMBRE + "TEXT NOT NULL,"
+                + "FOREIGN KEY("
+                + PizzaEntry.USUARIO + ") REFERENCES "
+                + UsuarioEntry.TABLE_NAME + "("
+                + UsuarioEntry.USUARIO + "),"
+                + "PRIMARY KEY("
+                + PizzaEntry.ID_PIZZA + "))");
+
     }
 
     @Override
