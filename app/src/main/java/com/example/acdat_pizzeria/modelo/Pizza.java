@@ -1,5 +1,9 @@
 package com.example.acdat_pizzeria.modelo;
 
+import android.content.ContentValues;
+
+import com.example.acdat_pizzeria.daos.data.PizzaEntry;
+import com.example.acdat_pizzeria.daos.data.UsuarioEntry;
 import com.example.acdat_pizzeria.modelo.enums.Ingrediente;
 import com.example.acdat_pizzeria.modelo.enums.Queso;
 import com.example.acdat_pizzeria.modelo.enums.Salsa;
@@ -191,6 +195,20 @@ public class Pizza implements Serializable {
         }
 
         return cadena.toString();
+    }
+
+    public ContentValues toContentValues() {
+
+        ContentValues values = new ContentValues();
+
+        values.put(PizzaEntry.TAMANO, getTamano().ordinal());
+        values.put(PizzaEntry.SALSA, getSalsa().ordinal());
+        values.put(PizzaEntry.QUESO, getQueso().ordinal());
+        values.put(UsuarioEntry.USUARIO, getUsuario().getUsuario());
+        values.put(PizzaEntry.FAVORITA, getFavorita());
+        values.put(PizzaEntry.NOMBRE, getNombre());
+
+        return values;
     }
 
 }

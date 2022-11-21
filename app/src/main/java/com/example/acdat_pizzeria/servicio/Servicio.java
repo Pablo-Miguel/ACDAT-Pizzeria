@@ -76,4 +76,8 @@ public class Servicio {
         return null;
     }
 
+    public void setPizzaFav(Pizza pizza, Boolean valor){
+        DAOPizzas.getInstance().setPizzaFav(pizza, valor);
+    }
+
 }

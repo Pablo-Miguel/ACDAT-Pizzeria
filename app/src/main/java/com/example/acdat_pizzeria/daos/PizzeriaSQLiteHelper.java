@@ -82,9 +82,9 @@ public class PizzeriaSQLiteHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int version_anterior, int version_nueva) {
-        sqLiteDatabase.execSQL("DROP TABLE " + IngredienteEntry.TABLE_NAME);
-        sqLiteDatabase.execSQL("DROP TABLE " + PizzaEntry.TABLE_NAME);
-        sqLiteDatabase.execSQL("DROP TABLE " + UsuarioEntry.TABLE_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + IngredienteEntry.TABLE_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + PizzaEntry.TABLE_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + UsuarioEntry.TABLE_NAME);
         onCreate(sqLiteDatabase);
     }
 
@@ -94,6 +94,39 @@ public class PizzeriaSQLiteHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = getWritableDatabase();
         db.insert(UsuarioEntry.TABLE_NAME, null, usuario.toContentValues());
+
+        return id;
+
+    }
+
+    public long savePizza(Pizza pizza){
+
+        long id = 0;
+        int id_max = 1;
+
+        SQLiteDatabase db = getWritableDatabase();
+
+        db.insert(PizzaEntry.TABLE_NAME, null, pizza.toContentValues());
+
+        Cursor cursor = db.rawQuery("SELECT MAX(?) FROM " + PizzaEntry.TABLE_NAME, new String[]{PizzaEntry.ID_PIZZA});
+
+        if(cursor.moveToFirst()){
+            do{
+
+                id_max = cursor.getInt(0);
+
+            } while(cursor.moveToNext());
+        }
+
+        cursor.close();
+
+        ContentValues valuesIngr = new ContentValues();
+
+        for (Ingrediente ingrediente : pizza.getIngredientes()) {
+            valuesIngr.put(IngredienteEntry.INGREDIENTE, ingrediente.ordinal());
+            valuesIngr.put(IngredienteEntry.ID_PIZZA, id_max);
+            db.insert(IngredienteEntry.TABLE_NAME, null, valuesIngr);
+        }
 
         return id;
 
@@ -153,14 +186,21 @@ public class PizzeriaSQLiteHelper extends SQLiteOpenHelper {
 
         Cursor cursor = db.rawQuery("SELECT * FROM " + PizzaEntry.TABLE_NAME, null);
 
+        Boolean fav = null;
         if(cursor.moveToFirst()){
             do{
+
+                if(cursor.getInt(5) == 0){
+                    fav = false;
+                } else {
+                    fav = true;
+                }
 
                 ingredientes = getIngredientes(cursor.getInt(0));
 
                 pizzas.add(new Pizza(cursor.getInt(0), Tamano.values()[cursor.getInt(1)], Salsa.values()[cursor.getInt(2)],
                         Queso.values()[cursor.getInt(3)], ingredientes, DAOPizzas.getInstance().getUsuario(new Usuario(cursor.getString(4)))));
-                pizzas.get(pizzas.size() - 1).setFavorita(cursor.getExtras().getBoolean("favorita"));
+                pizzas.get(pizzas.size() - 1).setFavorita(fav);
 
             } while(cursor.moveToNext());
         }
@@ -192,4 +232,22 @@ public class PizzeriaSQLiteHelper extends SQLiteOpenHelper {
         return ingredientes;
     }
 
+    public void setPizzaFav(Pizza pizza, Boolean valor) {
+        pizza.setFavorita(valor);
+
+        SQLiteDatabase db = getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        //Integer favorita = null;
+        if(pizza.getFavorita()){
+            values.put(PizzaEntry.FAVORITA, 1);
+            //favorita = 1;
+        } else {
+            values.put(PizzaEntry.FAVORITA, 0);
+            //favorita = 0;
+        }
+
+        db.update(PizzaEntry.TABLE_NAME, values, "id_pizza=?", new String[]{pizza.getIdPizza().toString()});
+        //db.execSQL("UPDATE " + PizzaEntry.TABLE_NAME + " SET favorita=? WHERE id_pizza=?", new String[]{favorita.toString(), pizza.getIdPizza().toString()});
+    }
 }

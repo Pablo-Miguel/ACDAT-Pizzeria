@@ -78,7 +78,7 @@ public class Configuracion extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.btnBorrar:
                 if(Servicio.getInstance().getPizzaFav(usuario) != null){
-                    Servicio.getInstance().getPizzaFav(usuario).setFavorita(false);
+                    Servicio.getInstance().setPizzaFav(Servicio.getInstance().getPizzaFav(usuario), false);
 
                     AlertDialog.Builder dialogo1 = crearDialogo("Pizza favorita eliminada", "Su pizza ha sido desmarcada como favorita correctamente");
 

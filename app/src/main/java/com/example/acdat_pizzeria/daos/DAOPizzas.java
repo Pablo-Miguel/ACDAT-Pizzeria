@@ -122,7 +122,7 @@ public class DAOPizzas {
     public int insertarUsuario(Usuario usuario) {
 
         if(DAOPizzas.getInstance().getUsuario(usuario) == null){
-            if(dbHelper.saveUsuario(usuario) > 0){
+            if(dbHelper.saveUsuario(usuario) >= 0){
                 return 0;
             }
         }
@@ -134,7 +134,7 @@ public class DAOPizzas {
     public int insertarPizza(Pizza pizza) {
 
         if(DAOPizzas.getInstance().getPizza(pizza) == null){
-            if(listaPizzas.add(pizza)){
+            if(dbHelper.savePizza(pizza) >= 0){
                 return 0;
             }
         }
@@ -155,4 +155,7 @@ public class DAOPizzas {
         return null;
     }
 
+    public void setPizzaFav(Pizza pizza, Boolean valor) {
+        dbHelper.setPizzaFav(pizza, valor);
+    }
 }
