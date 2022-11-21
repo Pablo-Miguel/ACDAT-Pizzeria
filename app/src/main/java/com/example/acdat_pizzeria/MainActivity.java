@@ -12,6 +12,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.acdat_pizzeria.daos.DAOPizzas;
 import com.example.acdat_pizzeria.daos.PizzeriaSQLiteHelper;
 import com.example.acdat_pizzeria.databinding.ActivityMainBinding;
 import com.example.acdat_pizzeria.modelo.Usuario;
@@ -41,14 +42,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         View view = binding.getRoot();
         setContentView(view);
         getSupportActionBar().hide();
-        PizzeriaSQLiteHelper bbdd = new PizzeriaSQLiteHelper(MainActivity.this);
-        SQLiteDatabase bd = bbdd.getWritableDatabase();
-        if (bd==null){
-            System.out.println("La BBDD no existe");
-        }
-        else{
-            System.out.println("Existe");
-        }
+
+        DAOPizzas.establecerConexion(new PizzeriaSQLiteHelper(MainActivity.this));
 
         if(preferencias.getBoolean("recordar", false)){
             Intent intentMenuOpciones = new Intent(MainActivity.this, MenuOpciones.class);

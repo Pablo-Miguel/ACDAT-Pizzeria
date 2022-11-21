@@ -21,6 +21,17 @@ public class Pizza implements Serializable {
     private Boolean favorita;
     private String nombre;
 
+    public Pizza(Integer idPizza, Tamano tamano, Salsa salsa, Queso queso, ArrayList<Ingrediente> ingredientes, Usuario usuario) {
+        this.idPizza = idPizza;
+        this.tamano = tamano;
+        this.salsa = salsa;
+        this.queso = queso;
+        this.ingredientes = ingredientes;
+        this.usuario = usuario;
+        this.favorita = false;
+        this.nombre = "Predeterminada";
+    }
+
     public Pizza(Tamano tamano, Salsa salsa, Queso queso, ArrayList<Ingrediente> ingredientes, Usuario usuario) {
         this.idPizza = incrmentId();
         this.tamano = tamano;
@@ -41,6 +52,7 @@ public class Pizza implements Serializable {
         this.nombre = nombre;
     }
 
+    /*
     public Pizza(Tamano tamano, Salsa salsa, Queso queso, ArrayList<Ingrediente> ingredientes, Usuario usuario, String nombre) {
         this.idPizza = incrmentId();
         this.tamano = tamano;
@@ -51,6 +63,7 @@ public class Pizza implements Serializable {
         this.favorita = false;
         this.nombre = nombre;
     }
+    */
 
     public Pizza(Pizza pizza) {
         this.idPizza = incrmentId();

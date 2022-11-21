@@ -1,5 +1,6 @@
 package com.example.acdat_pizzeria.daos;
 
+import com.example.acdat_pizzeria.MainActivity;
 import com.example.acdat_pizzeria.modelo.Pizza;
 import com.example.acdat_pizzeria.modelo.enums.Ingrediente;
 import com.example.acdat_pizzeria.modelo.enums.Queso;
@@ -14,6 +15,7 @@ public class DAOPizzas {
     private static ArrayList<Usuario> listaUsuarios;
     private static ArrayList<Pizza> listaPizzas;
     private static ArrayList<Pizza> listaPizzasPredeterminadas;
+    private static PizzeriaSQLiteHelper dbHelper;
 
     public static DAOPizzas getInstance() {
 
@@ -36,20 +38,26 @@ public class DAOPizzas {
         return dao;
     }
 
+    public static void establecerConexion(PizzeriaSQLiteHelper dbHelper){
+        DAOPizzas.dbHelper = dbHelper;
+    }
+
     public ArrayList<Usuario> getUsuarios(){
 
+        /*
         if(listaUsuarios.isEmpty()){
             listaUsuarios.add(new Usuario("admin@gmail.com", "admin", "1234"));
             listaUsuarios.add(new Usuario("pablo@gmail.com", "pablo", "1234"));
         }
+        */
 
-        return listaUsuarios;
+        return dbHelper.getUsuarios();
 
     }
 
     public ArrayList<Pizza> getPizzas(){
 
-        return listaPizzas;
+        return dbHelper.getPizzas();
 
     }
 
@@ -114,7 +122,7 @@ public class DAOPizzas {
     public int insertarUsuario(Usuario usuario) {
 
         if(DAOPizzas.getInstance().getUsuario(usuario) == null){
-            if(listaUsuarios.add(usuario)){
+            if(dbHelper.saveUsuario(usuario) > 0){
                 return 0;
             }
         }
