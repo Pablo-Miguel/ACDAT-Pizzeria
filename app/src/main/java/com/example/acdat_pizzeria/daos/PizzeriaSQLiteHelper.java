@@ -117,25 +117,11 @@ public class PizzeriaSQLiteHelper extends SQLiteOpenHelper {
                 + pizza.getUsuario().getUsuario() + "\", "
                 + pizza.getFavorita() + ", \""
                 + pizza.getNombre() + "\")");
-        System.out.println("INSERT INTO " + PizzaEntry.TABLE_NAME + " ("
-                + PizzaEntry.TAMANO + ", "
-                + PizzaEntry.SALSA + ", "
-                + PizzaEntry.QUESO + ", "
-                + PizzaEntry.USUARIO + ", "
-                + PizzaEntry.FAVORITA + ", "
-                + PizzaEntry.NOMBRE + ") VALUES ("
-                + pizza.getTamano().ordinal() + ", "
-                + pizza.getSalsa().ordinal() + ", "
-                + pizza.getQueso().ordinal() + ", \""
-                + pizza.getUsuario().getUsuario() + "\", "
-                + pizza.getFavorita() + ", \""
-                + pizza.getNombre() + "\")");
 
         Cursor cursor = db.rawQuery("SELECT MAX(" + PizzaEntry.ID_PIZZA + ") FROM " + PizzaEntry.TABLE_NAME, null);
 
         cursor.moveToFirst();
         id_max = cursor.getInt(0);
-        System.out.println("ID_PIZZA: " + id_max);
 
         cursor.close();
 
@@ -227,8 +213,6 @@ public class PizzeriaSQLiteHelper extends SQLiteOpenHelper {
                         DAOPizzas.getInstance().getUsuario(new Usuario(cursor.getString(4))),
                         cursor.getString(6)));
                 pizzas.get(pizzas.size() - 1).setFavorita(fav);
-
-                System.out.println(pizzas.get(pizzas.size() - 1).toString());
 
             } while(cursor.moveToNext());
         }

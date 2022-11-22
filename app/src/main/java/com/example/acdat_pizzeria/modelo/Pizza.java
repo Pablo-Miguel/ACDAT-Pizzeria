@@ -2,6 +2,7 @@ package com.example.acdat_pizzeria.modelo;
 
 import android.content.ContentValues;
 
+import com.example.acdat_pizzeria.daos.DAOPizzas;
 import com.example.acdat_pizzeria.daos.data.PizzaEntry;
 import com.example.acdat_pizzeria.daos.data.UsuarioEntry;
 import com.example.acdat_pizzeria.modelo.enums.Ingrediente;
@@ -78,7 +79,7 @@ public class Pizza implements Serializable {
         this.usuario = pizza.getUsuario();
         this.favorita = pizza.getFavorita();
         this.nombre = pizza.getNombre();
-        pizza.setFavorita(false);
+        DAOPizzas.getInstance().setPizzaFav(pizza, false);
     }
 
     public Pizza(Integer idPizza) {
@@ -185,13 +186,9 @@ public class Pizza implements Serializable {
     public String toString() {
         StringBuilder cadena = new StringBuilder();
 
-        cadena.append("ID:\n\t - " + getIdPizza() + "\n");
-        cadena.append("NOMBRE:\n\t - " + getNombre() + "\n");
         cadena.append("TAMAÑO:\n\t - " + getTamano().getNombre() + "\n");
         cadena.append("SALSA:\n\t - " + getSalsa().getNombre() + "\n");
         cadena.append("QUESO:\n\t - " + getQueso().getNombre() + "\n");
-        cadena.append("FAVORITA:\n\t - " + getFavorita() + "\n");
-        cadena.append("USUARIO:\n\t - " + getUsuario().getUsuario() + "\n");
         cadena.append("INGREDIENTES:\n");
 
         for(int i = 0; i < getIngredientes().size(); i++){

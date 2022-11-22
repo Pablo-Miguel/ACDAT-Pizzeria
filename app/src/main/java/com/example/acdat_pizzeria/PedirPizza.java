@@ -51,7 +51,6 @@ public class PedirPizza extends AppCompatActivity implements View.OnClickListene
         binding.btnPizzaFav.setOnClickListener(this);
 
         pizzaPreferida = Servicio.getInstance().getPizzaFav(usuario);
-
     }
 
 
@@ -91,7 +90,10 @@ public class PedirPizza extends AppCompatActivity implements View.OnClickListene
 
                         if (pizzaPreferida != null) {
                             Servicio.getInstance().setPizzaFav(pizzaPreferida, false);
+                            System.out.println(pizzaPreferida.toString());
                         }
+
+                        System.out.println(pizza);
 
                     } else {
 
