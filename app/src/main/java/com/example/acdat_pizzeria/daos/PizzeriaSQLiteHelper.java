@@ -38,19 +38,17 @@ public class PizzeriaSQLiteHelper extends SQLiteOpenHelper {
                 + UsuarioEntry.USUARIO + " TEXT NOT NULL UNIQUE, "
                 + UsuarioEntry.PASSWORD + " INTEGER NOT NULL)");
         sqLiteDatabase.execSQL("CREATE TABLE " + PizzaEntry.TABLE_NAME + " ("
-                + PizzaEntry.ID_PIZZA + " INTEGER, "
+                + PizzaEntry.ID_PIZZA + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + PizzaEntry.TAMANO + " INTEGER, "
                 + PizzaEntry.SALSA + " INTEGER NOT NULL, "
                 + PizzaEntry.QUESO + " INTEGER NOT NULL, "
-                + PizzaEntry.USUARIO + " TEXT NOT NULL UNIQUE, "
+                + PizzaEntry.USUARIO + " TEXT NOT NULL, "
                 + PizzaEntry.FAVORITA + " INTEGER NOT NULL, "
                 + PizzaEntry.NOMBRE + " TEXT NOT NULL, "
                 + "FOREIGN KEY("
                 + PizzaEntry.USUARIO + ") REFERENCES "
                 + UsuarioEntry.TABLE_NAME + "("
-                + UsuarioEntry.USUARIO + "), "
-                + "PRIMARY KEY("
-                + PizzaEntry.ID_PIZZA + "))");
+                + UsuarioEntry.USUARIO + "))");
         sqLiteDatabase.execSQL("CREATE TABLE " + IngredienteEntry.TABLE_NAME + " ("
                 + IngredienteEntry.INGREDIENTE + " INTEGER, "
                 + IngredienteEntry.ID_PIZZA + " INTEGER, "
@@ -99,24 +97,45 @@ public class PizzeriaSQLiteHelper extends SQLiteOpenHelper {
 
     }
 
-    public long savePizza(Pizza pizza){
+    public Pizza savePizza(Pizza pizza){
 
         long id = 0;
         int id_max = 1;
 
         SQLiteDatabase db = getWritableDatabase();
 
-        db.insert(PizzaEntry.TABLE_NAME, null, pizza.toContentValues());
+        db.execSQL("INSERT INTO " + PizzaEntry.TABLE_NAME + " ("
+                + PizzaEntry.TAMANO + ", "
+                + PizzaEntry.SALSA + ", "
+                + PizzaEntry.QUESO + ", "
+                + PizzaEntry.USUARIO + ", "
+                + PizzaEntry.FAVORITA + ", "
+                + PizzaEntry.NOMBRE + ") VALUES ("
+                + pizza.getTamano().ordinal() + ", "
+                + pizza.getSalsa().ordinal() + ", "
+                + pizza.getQueso().ordinal() + ", \""
+                + pizza.getUsuario().getUsuario() + "\", "
+                + pizza.getFavorita() + ", \""
+                + pizza.getNombre() + "\")");
+        System.out.println("INSERT INTO " + PizzaEntry.TABLE_NAME + " ("
+                + PizzaEntry.TAMANO + ", "
+                + PizzaEntry.SALSA + ", "
+                + PizzaEntry.QUESO + ", "
+                + PizzaEntry.USUARIO + ", "
+                + PizzaEntry.FAVORITA + ", "
+                + PizzaEntry.NOMBRE + ") VALUES ("
+                + pizza.getTamano().ordinal() + ", "
+                + pizza.getSalsa().ordinal() + ", "
+                + pizza.getQueso().ordinal() + ", \""
+                + pizza.getUsuario().getUsuario() + "\", "
+                + pizza.getFavorita() + ", \""
+                + pizza.getNombre() + "\")");
 
-        Cursor cursor = db.rawQuery("SELECT MAX(?) FROM " + PizzaEntry.TABLE_NAME, new String[]{PizzaEntry.ID_PIZZA});
+        Cursor cursor = db.rawQuery("SELECT MAX(" + PizzaEntry.ID_PIZZA + ") FROM " + PizzaEntry.TABLE_NAME, null);
 
-        if(cursor.moveToFirst()){
-            do{
-
-                id_max = cursor.getInt(0);
-
-            } while(cursor.moveToNext());
-        }
+        cursor.moveToFirst();
+        id_max = cursor.getInt(0);
+        System.out.println("ID_PIZZA: " + id_max);
 
         cursor.close();
 
@@ -128,7 +147,12 @@ public class PizzeriaSQLiteHelper extends SQLiteOpenHelper {
             db.insert(IngredienteEntry.TABLE_NAME, null, valuesIngr);
         }
 
-        return id;
+        if(id >= 0){
+            return getPizzas().get(getPizzas().size() - 1);
+        } else {
+            return null;
+        }
+
 
     }
 
@@ -198,9 +222,13 @@ public class PizzeriaSQLiteHelper extends SQLiteOpenHelper {
 
                 ingredientes = getIngredientes(cursor.getInt(0));
 
-                pizzas.add(new Pizza(cursor.getInt(0), Tamano.values()[cursor.getInt(1)], Salsa.values()[cursor.getInt(2)],
-                        Queso.values()[cursor.getInt(3)], ingredientes, DAOPizzas.getInstance().getUsuario(new Usuario(cursor.getString(4)))));
+                pizzas.add(new Pizza(cursor.getInt(0), Tamano.values()[cursor.getInt(1)],
+                        Salsa.values()[cursor.getInt(2)], Queso.values()[cursor.getInt(3)], ingredientes,
+                        DAOPizzas.getInstance().getUsuario(new Usuario(cursor.getString(4))),
+                        cursor.getString(6)));
                 pizzas.get(pizzas.size() - 1).setFavorita(fav);
+
+                System.out.println(pizzas.get(pizzas.size() - 1).toString());
 
             } while(cursor.moveToNext());
         }

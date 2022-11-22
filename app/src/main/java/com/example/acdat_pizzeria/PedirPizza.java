@@ -73,7 +73,6 @@ public class PedirPizza extends AppCompatActivity implements View.OnClickListene
                 startActivity(intentPedirPizza);
                 break;
             case R.id.btnPizzaFav:
-                System.out.println(Servicio.getInstance().getPizza(pizza).toString());
                 if (Servicio.getInstance().getPizza(pizza) != null) {
                     if(!Servicio.getInstance().getPizza(pizza).getFavorita()){
                         Servicio.getInstance().setPizzaFav(Servicio.getInstance().getPizza(pizza), true);

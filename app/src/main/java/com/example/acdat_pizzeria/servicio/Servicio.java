@@ -60,15 +60,16 @@ public class Servicio {
         return DAOPizzas.getInstance().insertarUsuario(usuario);
     }
 
-    public int anyadirPizza(Pizza pizza) {
+    public Pizza anyadirPizza(Pizza pizza) {
         return DAOPizzas.getInstance().insertarPizza(pizza);
     }
 
     public Pizza getPizzaFav(Usuario usuario){
-        for(int i = 0; i < DAOPizzas.getInstance().getPizzas().size(); i++){
+        ArrayList<Pizza> lista = DAOPizzas.getInstance().getPizzas();
+        for(int i = 0; i < lista.size(); i++){
 
-            if(DAOPizzas.getInstance().getPizzas().get(i).getUsuario().equals(usuario) && DAOPizzas.getInstance().getPizzas().get(i).getFavorita()){
-                return DAOPizzas.getInstance().getPizzas().get(i);
+            if(lista.get(i).getUsuario().equals(usuario) && lista.get(i).getFavorita()){
+                return lista.get(i);
             }
 
         }

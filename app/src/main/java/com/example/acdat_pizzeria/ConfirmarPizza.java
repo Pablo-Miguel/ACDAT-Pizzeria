@@ -57,7 +57,9 @@ public class ConfirmarPizza extends AppCompatActivity implements View.OnClickLis
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btnAceptar:
-                if(Servicio.getInstance().anyadirPizza(pizza) == 0){
+                pizza = Servicio.getInstance().anyadirPizza(pizza);
+                System.out.println(pizza.toString());
+                if(pizza != null){
                     Intent intentPedirPizza = new Intent(ConfirmarPizza.this, PedirPizza.class);
                     intentPedirPizza.putExtra("usuario", usuario);
                     intentPedirPizza.putExtra("pizza", pizza);

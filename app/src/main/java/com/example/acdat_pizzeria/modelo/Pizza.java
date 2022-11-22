@@ -25,7 +25,7 @@ public class Pizza implements Serializable {
     private Boolean favorita;
     private String nombre;
 
-    public Pizza(Integer idPizza, Tamano tamano, Salsa salsa, Queso queso, ArrayList<Ingrediente> ingredientes, Usuario usuario) {
+    public Pizza(Integer idPizza, Tamano tamano, Salsa salsa, Queso queso, ArrayList<Ingrediente> ingredientes, Usuario usuario, String nombre) {
         this.idPizza = idPizza;
         this.tamano = tamano;
         this.salsa = salsa;
@@ -33,7 +33,7 @@ public class Pizza implements Serializable {
         this.ingredientes = ingredientes;
         this.usuario = usuario;
         this.favorita = false;
-        this.nombre = "Predeterminada";
+        this.nombre = nombre;
     }
 
     public Pizza(Tamano tamano, Salsa salsa, Queso queso, ArrayList<Ingrediente> ingredientes, Usuario usuario) {
@@ -70,7 +70,7 @@ public class Pizza implements Serializable {
     */
 
     public Pizza(Pizza pizza) {
-        this.idPizza = incrmentId();
+        this.idPizza = pizza.getIdPizza();
         this.tamano = pizza.getTamano();
         this.salsa = pizza.getSalsa();
         this.queso = pizza.getQueso();
@@ -185,9 +185,13 @@ public class Pizza implements Serializable {
     public String toString() {
         StringBuilder cadena = new StringBuilder();
 
+        cadena.append("ID:\n\t - " + getIdPizza() + "\n");
+        cadena.append("NOMBRE:\n\t - " + getNombre() + "\n");
         cadena.append("TAMAÑO:\n\t - " + getTamano().getNombre() + "\n");
         cadena.append("SALSA:\n\t - " + getSalsa().getNombre() + "\n");
         cadena.append("QUESO:\n\t - " + getQueso().getNombre() + "\n");
+        cadena.append("FAVORITA:\n\t - " + getFavorita() + "\n");
+        cadena.append("USUARIO:\n\t - " + getUsuario().getUsuario() + "\n");
         cadena.append("INGREDIENTES:\n");
 
         for(int i = 0; i < getIngredientes().size(); i++){

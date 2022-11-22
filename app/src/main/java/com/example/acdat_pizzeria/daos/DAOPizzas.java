@@ -131,15 +131,15 @@ public class DAOPizzas {
 
     }
 
-    public int insertarPizza(Pizza pizza) {
+    public Pizza insertarPizza(Pizza pizza) {
 
-        if(DAOPizzas.getInstance().getPizza(pizza) == null){
-            if(dbHelper.savePizza(pizza) >= 0){
-                return 0;
-            }
+        Pizza p = dbHelper.savePizza(pizza);
+
+        if(p != null){
+            return p;
         }
 
-        return -1;
+        return null;
 
     }
 
