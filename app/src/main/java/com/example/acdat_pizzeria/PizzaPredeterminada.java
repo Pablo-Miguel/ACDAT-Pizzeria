@@ -3,6 +3,7 @@ package com.example.acdat_pizzeria;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -19,6 +20,7 @@ import com.example.acdat_pizzeria.modelo.Pizza;
 import com.example.acdat_pizzeria.modelo.enums.Tamano;
 import com.example.acdat_pizzeria.modelo.Usuario;
 import com.example.acdat_pizzeria.servicio.Servicio;
+import com.example.acdat_pizzeria.vista.MyAdapter;
 
 import java.util.ArrayList;
 
@@ -55,8 +57,17 @@ public class PizzaPredeterminada extends AppCompatActivity {
             listTemp.add(p.getNombre());
         }
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listTemp);
+        binding.listaPredetermiadas.setHasFixedSize(true);
 
+        LinearLayoutManager layoutManager = new LinearLayoutManager(PizzaPredeterminada.this);
+        binding.listaPredetermiadas.setLayoutManager(layoutManager);
+
+        MyAdapter mAdapter = new MyAdapter((String[]) listTemp.toArray());
+        binding.listaPredetermiadas.setAdapter(mAdapter);
+
+        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listTemp);
+
+        /*
         binding.listaPizzas.setAdapter(adapter);
         binding.listaPizzas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -104,7 +115,7 @@ public class PizzaPredeterminada extends AppCompatActivity {
 
             }
         });
-
+        */
     }
 
     public void onBackPressed() {
