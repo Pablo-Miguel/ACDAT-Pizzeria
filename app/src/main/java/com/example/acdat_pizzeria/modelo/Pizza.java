@@ -2,6 +2,7 @@ package com.example.acdat_pizzeria.modelo;
 
 import android.content.ContentValues;
 
+import com.example.acdat_pizzeria.R;
 import com.example.acdat_pizzeria.daos.DAOPizzas;
 import com.example.acdat_pizzeria.daos.data.PizzaEntry;
 import com.example.acdat_pizzeria.daos.data.UsuarioEntry;
@@ -25,6 +26,7 @@ public class Pizza implements Serializable {
     private Usuario usuario;
     private Boolean favorita;
     private String nombre;
+    private int ref_img;
 
     public Pizza(Integer idPizza, Tamano tamano, Salsa salsa, Queso queso, ArrayList<Ingrediente> ingredientes, Usuario usuario, String nombre) {
         this.idPizza = idPizza;
@@ -35,6 +37,7 @@ public class Pizza implements Serializable {
         this.usuario = usuario;
         this.favorita = false;
         this.nombre = nombre;
+        this.ref_img = R.drawable.pizza;
     }
 
     public Pizza(Tamano tamano, Salsa salsa, Queso queso, ArrayList<Ingrediente> ingredientes, Usuario usuario) {
@@ -46,15 +49,17 @@ public class Pizza implements Serializable {
         this.usuario = usuario;
         this.favorita = false;
         this.nombre = "Predeterminada";
+        this.ref_img = R.drawable.pizza;
     }
 
-    public Pizza(Salsa salsa, Queso queso, ArrayList<Ingrediente> ingredientes, String nombre) {
+    public Pizza(Salsa salsa, Queso queso, ArrayList<Ingrediente> ingredientes, String nombre, int ref_img) {
         this.idPizza = incrmentId();
         this.salsa = salsa;
         this.queso = queso;
         this.ingredientes = ingredientes;
         this.favorita = false;
         this.nombre = nombre;
+        this.ref_img = ref_img;
     }
 
     /*
@@ -67,6 +72,7 @@ public class Pizza implements Serializable {
         this.usuario = usuario;
         this.favorita = false;
         this.nombre = nombre;
+        this.ref_img = R.drawable.pizza;
     }
     */
 
@@ -80,6 +86,7 @@ public class Pizza implements Serializable {
         this.favorita = pizza.getFavorita();
         this.nombre = pizza.getNombre();
         DAOPizzas.getInstance().setPizzaFav(pizza, false);
+        this.ref_img = pizza.getRef_img();
     }
 
     public Pizza(Integer idPizza) {
@@ -152,6 +159,14 @@ public class Pizza implements Serializable {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public int getRef_img() {
+        return ref_img;
+    }
+
+    public void setRef_img(int ref_img) {
+        this.ref_img = ref_img;
     }
 
     public Double getPrecio() {

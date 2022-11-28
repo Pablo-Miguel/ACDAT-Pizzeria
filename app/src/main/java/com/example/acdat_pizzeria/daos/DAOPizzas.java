@@ -1,6 +1,7 @@
 package com.example.acdat_pizzeria.daos;
 
 import com.example.acdat_pizzeria.MainActivity;
+import com.example.acdat_pizzeria.R;
 import com.example.acdat_pizzeria.modelo.Pizza;
 import com.example.acdat_pizzeria.modelo.enums.Ingrediente;
 import com.example.acdat_pizzeria.modelo.enums.Queso;
@@ -93,13 +94,13 @@ public class DAOPizzas {
             ingredientesBarbacoa.add(Ingrediente.MAIZ);
 
             listaPizzasPredeterminadas.add(new Pizza(Salsa.SALSA_DE_TOMATE, Queso.MOZZARELLA,
-                    ingredientesPecadoCarnal, "Pecado Carnal"));
+                    ingredientesPecadoCarnal, "Pecado Carnal", R.drawable.pecadocarnal));
             listaPizzasPredeterminadas.add(new Pizza(Salsa.CREMA_FRESCA, Queso.MOZZARELLA,
-                    ingredientesCarbonara, "Carbonara"));
+                    ingredientesCarbonara, "Carbonara", R.drawable.carbonara));
             listaPizzasPredeterminadas.add(new Pizza(Salsa.SALSA_DE_TOMATE, Queso.MOZZARELLA,
-                    ingredientesExtravaganzza, "Extravaganzza"));
+                    ingredientesExtravaganzza, "Extravaganzza", R.drawable.extravaganzza));
             listaPizzasPredeterminadas.add(new Pizza(Salsa.BBQ_ORIGINAL, Queso.MOZZARELLA,
-                    ingredientesBarbacoa, "Barbacoa"));
+                    ingredientesBarbacoa, "Barbacoa", R.drawable.barbacoa));
 
         }
 
