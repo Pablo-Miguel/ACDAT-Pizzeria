@@ -11,16 +11,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
 import com.example.acdat_pizzeria.databinding.ActivityPizzaPredeterminadaBinding;
 import com.example.acdat_pizzeria.modelo.Pizza;
-import com.example.acdat_pizzeria.modelo.enums.Tamano;
 import com.example.acdat_pizzeria.modelo.Usuario;
+import com.example.acdat_pizzeria.modelo.enums.Tamano;
 import com.example.acdat_pizzeria.servicio.Servicio;
-import com.example.acdat_pizzeria.vista.MyAdapter;
+import com.example.acdat_pizzeria.vista.PizzasAdapter;
 
 import java.util.ArrayList;
 
@@ -50,30 +47,11 @@ public class PizzaPredeterminada extends AppCompatActivity {
 
         usuario = (Usuario) getIntent().getSerializableExtra("usuario");
 
-        ArrayList<String> listTemp = new ArrayList<String>();
+        PizzasAdapter pizzasAdapter = new PizzasAdapter(Servicio.getInstance().getPizzasPredeterminadas());
 
-        for (Pizza p : Servicio.getInstance().getPizzasPredeterminadas()) {
-
-            listTemp.add(p.getNombre());
-        }
-
-        binding.listaPredetermiadas.setHasFixedSize(true);
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(PizzaPredeterminada.this);
-        binding.listaPredetermiadas.setLayoutManager(layoutManager);
-
-        MyAdapter mAdapter = new MyAdapter((String[]) listTemp.toArray());
-        binding.listaPredetermiadas.setAdapter(mAdapter);
-
-        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listTemp);
-
-        /*
-        binding.listaPizzas.setAdapter(adapter);
-        binding.listaPizzas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
+        pizzasAdapter.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+            public void onClick(View view) {
                 if (binding.rgTamano.getCheckedRadioButtonId() == -1) {
                     AlertDialog.Builder dialogo1 = crearDialogo(
                             "No hay tamaño seleccionado",
@@ -88,7 +66,7 @@ public class PizzaPredeterminada extends AppCompatActivity {
 
                     dialogo1.show();
                 } else{
-                    Pizza pizza = new Pizza(Servicio.getInstance().getPizzasPredeterminadas().get(position));
+                    Pizza pizza = new Pizza(Servicio.getInstance().getPizzasPredeterminadas().get(binding.recicler.getChildAdapterPosition(view)));
 
                     Tamano tamano = null;
                     if (binding.rgTamano.getCheckedRadioButtonId() == binding.rbIndividual.getId()) {
@@ -111,11 +89,10 @@ public class PizzaPredeterminada extends AppCompatActivity {
                     startActivity(intentPizzaPredeterminada);
 
                 }
-
-
             }
         });
-        */
+
+        binding.recicler.setAdapter(pizzasAdapter);
     }
 
     public void onBackPressed() {
